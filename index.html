@@ -6,7 +6,7 @@
   <title>Bite SLO | Central Coast Restaurant Guide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --sage: #dce8d4;
@@ -18,7 +18,6 @@
       --gold: #e5b95d;
       --ink: #18251e;
       --line: #b9c9b0;
-      --white: #ffffff;
     }
 
     * {
@@ -36,14 +35,13 @@
       font-family: "DM Sans", Arial, sans-serif;
     }
 
-    button,
-    input {
-      font: inherit;
-    }
-
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    button {
+      font: inherit;
     }
 
     .site-header {
@@ -66,10 +64,10 @@
     }
 
     .brand {
-      font-family: "Fraunces", Georgia, serif;
+      font-family: Georgia, "Times New Roman", serif;
       font-size: 1.8rem;
       font-weight: 700;
-      letter-spacing: -0.07em;
+      letter-spacing: -0.06em;
     }
 
     .brand span {
@@ -102,15 +100,14 @@
     }
 
     .hero {
-      overflow: hidden;
-      padding: 76px 5vw 88px;
+      padding: 78px 5vw 88px;
       background: var(--sage);
       border-bottom: 2px solid var(--forest);
     }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 54px;
       align-items: end;
       max-width: 1240px;
@@ -134,35 +131,36 @@
 
     h1 {
       max-width: 850px;
-      margin: 20px 0 26px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(3.4rem, 7vw, 6.7rem);
-      line-height: 1.04;
-      letter-spacing: -0.075em;
+      margin: 21px 0 28px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.25rem, 6.6vw, 6.25rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.06em;
     }
 
     .hero-copy {
-      max-width: 620px;
+      max-width: 610px;
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       line-height: 1.7;
     }
 
     .hero-card {
       position: relative;
-      min-height: 330px;
+      min-height: 300px;
       overflow: hidden;
       background: var(--forest);
       border: 2px solid var(--forest);
-      box-shadow: 10px 10px 0 var(--clay);
+      box-shadow: 9px 9px 0 var(--clay);
     }
 
     .hero-card img {
-      width: 100%;
-      height: 330px;
       display: block;
+      width: 100%;
+      height: 300px;
       object-fit: cover;
-      opacity: 0.77;
+      opacity: 0.86;
     }
 
     .hero-card-content {
@@ -170,22 +168,22 @@
       right: 0;
       bottom: 0;
       left: 0;
-      padding: 22px;
+      padding: 20px;
       color: white;
-      background: linear-gradient(transparent, rgba(24, 37, 30, 0.94));
+      background: linear-gradient(transparent, rgba(24, 37, 30, 0.95));
     }
 
     .hero-card-content strong {
       display: block;
       color: var(--gold);
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 1.75rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.55rem;
       letter-spacing: -0.04em;
     }
 
     .hero-card-content p {
       margin: 7px 0 0;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       line-height: 1.5;
     }
 
@@ -224,11 +222,11 @@
 
     .tab-panel {
       display: none;
-      animation: fade 0.25s ease;
     }
 
     .tab-panel.active {
       display: block;
+      animation: fade 0.25s ease;
     }
 
     @keyframes fade {
@@ -260,9 +258,9 @@
 
     .filter-top h2 {
       margin: 0;
-      font-family: "Fraunces", Georgia, serif;
+      font-family: Georgia, "Times New Roman", serif;
       font-size: 1.9rem;
-      letter-spacing: -0.05em;
+      letter-spacing: -0.045em;
     }
 
     .filter-top small {
@@ -300,7 +298,6 @@
       border-radius: 0;
       font-size: 0.82rem;
       font-weight: 700;
-      transition: 0.15s ease;
     }
 
     .filter:hover,
@@ -320,10 +317,10 @@
 
     .section-heading h2 {
       margin: 7px 0 0;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(2.35rem, 4vw, 4rem);
-      line-height: 1;
-      letter-spacing: -0.07em;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.25rem, 4vw, 3.85rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
     }
 
     .section-heading p {
@@ -360,46 +357,45 @@
 
     .card-image {
       position: relative;
-      height: 205px;
+      height: 145px;
       overflow: hidden;
       border-bottom: 2px solid var(--forest);
       background: var(--sand);
     }
 
     .card-image img {
+      display: block;
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
-      transition: transform 0.35s ease;
+      transition: transform 0.3s ease;
     }
 
     .card:hover .card-image img {
       transform: scale(1.04);
     }
 
-    .card-number {
+    .card-number,
+    .price {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 6px 8px;
-      color: var(--forest);
-      background: var(--cream);
-      border: 1px solid var(--forest);
-      font-size: 0.72rem;
+      top: 10px;
+      padding: 5px 7px;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.08em;
     }
 
+    .card-number {
+      left: 10px;
+      color: var(--forest);
+      background: var(--cream);
+      border: 1px solid var(--forest);
+    }
+
     .price {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      padding: 6px 8px;
+      right: 10px;
       color: white;
       background: var(--forest);
-      font-size: 0.76rem;
-      font-weight: 700;
     }
 
     .card-body {
@@ -411,10 +407,10 @@
 
     .card h3 {
       margin-bottom: 6px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 1.62rem;
-      line-height: 1.05;
-      letter-spacing: -0.05em;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
     }
 
     .location {
@@ -491,10 +487,10 @@
 
     .college-copy h2 {
       margin: 8px 0 16px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(2.5rem, 4vw, 4.3rem);
-      line-height: 0.97;
-      letter-spacing: -0.07em;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 4vw, 4.1rem);
+      line-height: 1.03;
+      letter-spacing: -0.055em;
     }
 
     .college-copy p {
@@ -505,24 +501,25 @@
     }
 
     .college-image {
-      min-height: 355px;
+      min-height: 315px;
     }
 
     .college-image img {
+      display: block;
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
     }
 
-    .deal-grid {
+    .deal-grid,
+    .guide-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
     .deal-card {
-      min-height: 220px;
+      min-height: 210px;
       padding: 22px;
       background: white;
       border: 2px solid var(--forest);
@@ -536,14 +533,21 @@
       background: var(--sage);
     }
 
-    .deal-card h3 {
+    .deal-card h3,
+    .guide-card h3,
+    .info-box h3 {
       margin: 12px 0 8px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 1.45rem;
+      font-family: Georgia, "Times New Roman", serif;
       letter-spacing: -0.04em;
     }
 
-    .deal-card p {
+    .deal-card h3 {
+      font-size: 1.4rem;
+    }
+
+    .deal-card p,
+    .guide-card p,
+    .info-box p {
       margin: 0;
       font-size: 0.88rem;
       line-height: 1.55;
@@ -555,12 +559,6 @@
       font-weight: 700;
     }
 
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
     .guide-card {
       overflow: hidden;
       background: white;
@@ -568,9 +566,9 @@
     }
 
     .guide-card img {
-      width: 100%;
-      height: 210px;
       display: block;
+      width: 100%;
+      height: 170px;
       object-fit: cover;
       border-bottom: 2px solid var(--forest);
     }
@@ -580,16 +578,7 @@
     }
 
     .guide-card h3 {
-      margin-bottom: 8px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 1.5rem;
-      letter-spacing: -0.04em;
-    }
-
-    .guide-card p {
-      margin: 0;
-      font-size: 0.9rem;
-      line-height: 1.55;
+      font-size: 1.45rem;
     }
 
     .how-it-works {
@@ -609,16 +598,7 @@
     }
 
     .info-box h3 {
-      margin-bottom: 10px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: 1.65rem;
-      letter-spacing: -0.04em;
-    }
-
-    .info-box p {
-      margin: 0;
-      font-size: 0.92rem;
-      line-height: 1.6;
+      font-size: 1.6rem;
     }
 
     footer {
@@ -652,10 +632,6 @@
       .guide-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .college-image {
-        min-height: 280px;
-      }
     }
 
     @media (max-width: 600px) {
@@ -672,8 +648,7 @@
       }
 
       h1 {
-        font-size: clamp(3.1rem, 16vw, 4.6rem);
-        line-height: 1.06;
+        font-size: clamp(3rem, 15vw, 4.5rem);
       }
 
       main {
@@ -701,15 +676,6 @@
 
       .college-copy {
         padding: 28px;
-      }
-
-      .section-tabs {
-        gap: 6px;
-      }
-
-      .section-tab {
-        padding: 9px 11px;
-        font-size: 0.76rem;
       }
 
       .footer-inner p + p {
@@ -742,10 +708,10 @@
       </div>
 
       <aside class="hero-card">
-        <img src="https://images.squarespace-cdn.com/content/v1/59ceed0d8a02c7512beed014/1729882089226-IXA39O71KVR156X8TOUP/1O1A9293.jpg" alt="Plated dishes at Novo Restaurant in San Luis Obispo">
+        <img src="https://www.lotsafunmaps.com/view_xs_webp.php?id=40272" alt="Mission Plaza in downtown San Luis Obispo">
         <div class="hero-card-content">
-          <strong>Start with a good meal.</strong>
-          <p>Real local spots, menu links, useful price ranges, and plenty of ways to narrow your search.</p>
+          <strong>Central Coast, well fed.</strong>
+          <p>Real local spots, menu links, useful price ranges, and an easier way to choose where to eat.</p>
         </div>
       </aside>
     </div>
@@ -796,13 +762,13 @@
           <div class="eyebrow">Start here</div>
           <h2>San Luis Obispo staples</h2>
         </div>
-        <p>Six reliable stops with an easy visual preview of the food and atmosphere.</p>
+        <p>Six reliable stops with menu-focused visuals and direct restaurant links.</p>
       </div>
 
       <div class="restaurant-grid" id="restaurantGrid">
         <article class="card" data-tags="budget coffee casual vegetarian downtown calpoly">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=85" alt="Coffee and a pastry">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" alt="Latte and pastry, similar to Scout Coffee's cafe offerings">
             <span class="card-number">01 / COFFEE</span>
             <span class="price">$</span>
           </div>
@@ -824,7 +790,7 @@
 
         <article class="card" data-tags="budget casual family downtown calpoly">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1200&q=85" alt="Barbecue sandwich on a plate">
+            <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/slocal/firestone2_C78446C2-5056-A36A-0B78D9B1463F69EA-c78446455056a36_c7844707-5056-a36a-0bf36f89e4be60d9.png" alt="Firestone Grill tri-tip sandwich">
             <span class="card-number">02 / AMERICAN</span>
             <span class="price">$</span>
           </div>
@@ -846,7 +812,7 @@
 
         <article class="card" data-tags="mid casual family vegetarian downtown calpoly">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85" alt="Mediterranean-style meal with fresh vegetables">
+            <img src="https://cdn.prod.website-files.com/62a02ba3a283f600119050df/62c5152409e0c995ca4d2dc4_3S1A3283_colorcorrected_.jpg" alt="Mediterranean dishes from Petra Mediterranean Pizza and Grill">
             <span class="card-number">03 / MEDITERRANEAN</span>
             <span class="price">$</span>
           </div>
@@ -861,14 +827,14 @@
             </div>
             <div class="card-footer">
               <span>Typical spend: $13–25</span>
-              <a class="menu-link" href="https://www.petraslo.com/menu" target="_blank" rel="noopener">View menu</a>
+              <a class="menu-link" href="https://www.eatpetra.com/" target="_blank" rel="noopener">View menu</a>
             </div>
           </div>
         </article>
 
         <article class="card" data-tags="mid date vegetarian downtown">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=1200&q=85" alt="Thai curry and rice">
+            <img src="https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/275efa0e-2664-41d3-9261-42fa46ca7ded.jpg" alt="Thai dishes from Thai Palace San Luis Obispo">
             <span class="card-number">04 / THAI</span>
             <span class="price">$$</span>
           </div>
@@ -890,7 +856,7 @@
 
         <article class="card" data-tags="mid splurge date family outdoor vegetarian downtown">
           <div class="card-image">
-            <img src="https://images.squarespace-cdn.com/content/v1/59ceed0d8a02c7512beed014/1770074823530-B07622BGJASTLYHNG9O9/lamb.png?format=1500w" alt="Signature plated dish at Novo Restaurant">
+            <img src="https://images.squarespace-cdn.com/content/v1/59ceed0d8a02c7512beed014/1770074823530-B07622BGJASTLYHNG9O9/lamb.png?format=1500w" alt="Signature ribeye dish at Novo Restaurant">
             <span class="card-number">05 / CALIFORNIA</span>
             <span class="price">$$</span>
           </div>
@@ -946,7 +912,7 @@
           <p>Practical picks for between labs, low-key dinners downtown, and getting the most from your dining money. Deals can change, so always confirm before you go.</p>
         </div>
         <div class="college-image">
-          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1400&q=85" alt="Pizza shared at a casual restaurant">
+          <img src="https://images.squarespace-cdn.com/content/v1/58c35a0e579fb3281396b7f0/1600399594442-WE658PA8GVLCTAMLE9TC/firestone%2Bgrill" alt="Firestone Grill tri-tip sandwich">
         </div>
       </div>
 
@@ -990,7 +956,7 @@
 
       <div class="guide-grid">
         <article class="guide-card">
-          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85" alt="Warmly lit restaurant patio">
+          <img src="https://www.lotsafunmaps.com/view_xs_webp.php?id=40274" alt="Mission Plaza in downtown San Luis Obispo">
           <div>
             <div class="eyebrow">Downtown SLO</div>
             <h3>Walkable dinner plans</h3>
@@ -999,7 +965,7 @@
         </article>
 
         <article class="guide-card">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85" alt="Central Coast ocean view">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85" alt="California coast ocean view">
           <div>
             <div class="eyebrow">Coastal day trip</div>
             <h3>Take the scenic route</h3>
@@ -1008,7 +974,7 @@
         </article>
 
         <article class="guide-card">
-          <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85" alt="Friends sharing food around a table">
+          <img src="https://ctycms.com/ca-san-luis-obispo/images/goshi-outside.jpg" alt="Exterior of Goshi Japanese Restaurant">
           <div>
             <div class="eyebrow">Group plans</div>
             <h3>Easy for everyone</h3>
