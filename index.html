@@ -1,1589 +1,429 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLO Coast Eats | San Luis Obispo & Central Coast Dining Guide</title>
-  
-  <!-- Scout Coffee Inspired Google Fonts: Fraunces (Warm Display Serif) & Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      /* Scout Coffee Inspired Light Palette */
-      --cream-bg: #FBF9F5;
-      --card-bg: #FFFFFF;
-      --card-alt: #F6F3EC;
-      
-      --sage-primary: #6A8D7B;
-      --sage-dark: #4A6B5B;
-      --sage-light: #EBF1ED;
-      --sage-border: #D2E0D7;
-      
-      --terracotta: #D97A63;
-      --terracotta-light: #FDF4F2;
-      --terracotta-border: #F3C9BF;
-      
-      --honey: #DA9D42;
-      --honey-light: #FCF6E8;
-      
-      --ocean-sky: #4A8C9E;
-      --ocean-light: #EEF7FA;
-      
-      --text-main: #2C3531;
-      --text-muted: #64716B;
-      --text-light: #8E9B94;
-      --border-color: #E8E3DA;
-      --border-subtle: #F0ECE3;
-      
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-xl: 32px;
-      
-      --shadow-soft: 0 10px 30px -5px rgba(106, 141, 123, 0.08);
-      --shadow-hover: 0 18px 40px -8px rgba(106, 141, 123, 0.16);
-      --shadow-card: 0 4px 20px rgba(44, 53, 49, 0.03);
-      
-      --font-serif: 'Fraunces', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--cream-bg);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      line-height: 1.55;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1220px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    header {
-      background-color: rgba(251, 249, 245, 0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: var(--text-main);
-    }
-
-    .brand-badge {
-      width: 48px;
-      height: 48px;
-      background-color: var(--sage-light);
-      border: 1.5px solid var(--sage-border);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      color: var(--sage-dark);
-      box-shadow: 0 4px 12px rgba(106, 141, 123, 0.1);
-    }
-
-    .brand-title {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-      line-height: 1.1;
-    }
-
-    .brand-subtitle {
-      font-size: 11px;
-      color: var(--sage-dark);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 2px;
-    }
-
-    .search-wrapper {
-      flex: 1;
-      max-width: 440px;
-      position: relative;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 12px 18px 12px 44px;
-      border-radius: var(--radius-xl);
-      border: 1.5px solid var(--border-color);
-      background-color: var(--card-bg);
-      font-family: var(--font-sans);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-main);
-      outline: none;
-      transition: all 0.25s ease;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
-    }
-
-    .search-input:focus {
-      border-color: var(--sage-primary);
-      box-shadow: 0 0 0 4px var(--sage-light);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--sage-primary);
-      width: 18px;
-      height: 18px;
-      pointer-events: none;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 11px 20px;
-      border-radius: var(--radius-xl);
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      text-decoration: none;
-    }
-
-    .btn-sage {
-      background-color: var(--sage-primary);
-      color: white;
-    }
-
-    .btn-sage:hover {
-      background-color: var(--sage-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(106, 141, 123, 0.25);
-    }
-
-    .btn-terracotta {
-      background-color: var(--terracotta-light);
-      border: 1px solid var(--terracotta-border);
-      color: var(--terracotta);
-    }
-
-    .btn-terracotta:hover {
-      background-color: var(--terracotta);
-      color: white;
-    }
-
-    .btn-outline {
-      background-color: var(--card-bg);
-      border: 1.5px solid var(--border-color);
-      color: var(--text-main);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--sage-primary);
-      background-color: var(--sage-light);
-    }
-
-    .hero-section {
-      padding: 36px 0 24px 0;
-    }
-
-    .hero-card {
-      background: linear-gradient(135deg, #FFFFFF 0%, #F6F3EC 100%);
-      border: 1.5px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: 44px 40px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .hero-card::after {
-      content: '🌿';
-      position: absolute;
-      right: 24px;
-      bottom: -20px;
-      font-size: 140px;
-      opacity: 0.08;
-      pointer-events: none;
-    }
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: var(--radius-xl);
-      background-color: var(--sage-light);
-      border: 1px solid var(--sage-border);
-      color: var(--sage-dark);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 20px;
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--text-main);
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
-
-    .hero-title span {
-      color: var(--sage-primary);
-      font-style: italic;
-    }
-
-    .hero-desc {
-      font-size: 16px;
-      color: var(--text-muted);
-      max-width: 660px;
-      font-weight: 500;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-
-    .quick-vibe-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .vibe-pill {
-      padding: 8px 16px;
-      border-radius: var(--radius-xl);
-      background-color: var(--card-bg);
-      border: 1.5px solid var(--border-color);
-      color: var(--text-main);
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .vibe-pill:hover, .vibe-pill.active {
-      background-color: var(--sage-primary);
-      color: white;
-      border-color: var(--sage-primary);
-    }
-
-    .student-hub {
-      margin: 28px 0 36px 0;
-      background-color: #F3EFE6;
-      border: 1.5px solid #E2DCD0;
-      border-radius: var(--radius-xl);
-      padding: 32px 36px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .student-hub-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .student-title-group h2 {
-      font-family: var(--font-serif);
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .student-subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-top: 4px;
-    }
-
-    .student-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 18px;
-    }
-
-    .student-card {
-      background-color: var(--card-bg);
-      border: 1.5px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      transition: all 0.25s ease;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .student-card:hover {
-      border-color: var(--sage-primary);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .student-card-tag {
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--terracotta);
-      margin-bottom: 8px;
-    }
-
-    .student-card-name {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-
-    .student-card-detail {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      font-weight: 500;
-    }
-
-    .student-card-deal {
-      font-size: 12px;
-      background-color: var(--honey-light);
-      border: 1px solid #F3E3C3;
-      color: #8C5E18;
-      padding: 8px 12px;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-    }
-
-    .categories-section {
-      margin-bottom: 24px;
-    }
-
-    .category-scroll {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      scrollbar-width: none;
-    }
-
-    .category-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .cat-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 22px;
-      background-color: var(--card-bg);
-      border: 1.5px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-main);
-      white-space: nowrap;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .cat-btn:hover, .cat-btn.active {
-      background-color: var(--sage-primary);
-      color: white;
-      border-color: var(--sage-primary);
-      box-shadow: 0 6px 18px rgba(106, 141, 123, 0.2);
-    }
-
-    .filter-panel {
-      background-color: var(--card-bg);
-      border-radius: var(--radius-xl);
-      border: 1.5px solid var(--border-color);
-      padding: 24px;
-      margin-bottom: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .filter-row {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .filter-label {
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      min-width: 90px;
-    }
-
-    .filter-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .filter-chip {
-      padding: 7px 15px;
-      border-radius: var(--radius-md);
-      background-color: var(--card-alt);
-      border: 1px solid var(--border-color);
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .filter-chip:hover, .filter-chip.active {
-      background-color: var(--sage-light);
-      color: var(--sage-dark);
-      border-color: var(--sage-border);
-    }
-
-    .results-info {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .results-count {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .clear-filters-btn {
-      background: none;
-      border: none;
-      color: var(--terracotta);
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      display: none;
-    }
-
-    .clear-filters-btn:hover {
-      text-decoration: underline;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 28px;
-      margin-bottom: 56px;
-    }
-
-    .spot-card {
-      background-color: var(--card-bg);
-      border-radius: var(--radius-xl);
-      border: 1.5px solid var(--border-color);
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: var(--shadow-card);
-      position: relative;
-    }
-
-    .spot-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--sage-border);
-    }
-
-    .spot-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .spot-cat-badge {
-      display: inline-block;
-      padding: 5px 12px;
-      border-radius: var(--radius-md);
-      background-color: var(--sage-light);
-      border: 1px solid var(--sage-border);
-      color: var(--sage-dark);
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .save-heart-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-light);
-      padding: 4px;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-
-    .save-heart-btn:hover, .save-heart-btn.saved {
-      color: var(--terracotta);
-      transform: scale(1.15);
-    }
-
-    .spot-name {
-      font-family: var(--font-serif);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
-
-    .spot-meta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .spot-rating {
-      color: var(--honey);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .spot-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 500;
-      line-height: 1.55;
-      margin-bottom: 18px;
-    }
-
-    .spot-highlight-box {
-      background-color: var(--card-alt);
-      border-left: 3px solid var(--sage-primary);
-      padding: 12px 14px;
-      border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      font-size: 13px;
-      color: var(--text-main);
-      margin-bottom: 18px;
-    }
-
-    .spot-highlight-box strong {
-      font-weight: 800;
-      color: var(--sage-dark);
-    }
-
-    .spot-tags-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-
-    .mini-tag {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: var(--radius-sm);
-      background-color: var(--card-alt);
-      color: var(--text-muted);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .spot-card-footer {
-      display: flex;
-      gap: 8px;
-      margin-top: auto;
-    }
-
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background-color: rgba(44, 53, 49, 0.4);
-      backdrop-filter: blur(8px);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-box {
-      background-color: var(--card-bg);
-      border-radius: var(--radius-xl);
-      max-width: 540px;
-      width: 100%;
-      padding: 36px;
-      position: relative;
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
-      transform: translateY(12px);
-      transition: transform 0.25s ease;
-      max-height: 90vh;
-      overflow-y: auto;
-      border: 1.5px solid var(--border-color);
-    }
-
-    .modal-overlay.active .modal-box {
-      transform: translateY(0);
-    }
-
-    .close-modal-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--card-alt);
-      border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-weight: 800;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      transition: background-color 0.2s ease;
-    }
-
-    .close-modal-btn:hover {
-      background-color: var(--border-color);
-    }
-
-    .spinner-display {
-      background-color: var(--sage-light);
-      border: 2px dashed var(--sage-border);
-      border-radius: var(--radius-lg);
-      padding: 32px 20px;
-      text-align: center;
-      margin: 24px 0;
-    }
-
-    .spinner-result-title {
-      font-family: var(--font-serif);
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--sage-dark);
-      margin-bottom: 6px;
-    }
-
-    .spinner-result-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      background-color: var(--card-bg);
-      border-radius: var(--radius-xl);
-      border: 1.5px solid var(--border-color);
-      grid-column: 1 / -1;
-    }
-
-    .empty-icon {
-      font-size: 44px;
-      margin-bottom: 14px;
-    }
-
-    footer {
-      margin-top: auto;
-      background-color: #ECE7DD;
-      color: var(--text-muted);
-      padding: 44px 0;
-      font-size: 13px;
-      border-top: 1.5px solid var(--border-color);
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .footer-brand {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    @media (max-width: 768px) {
-      .header-content {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .search-wrapper {
-        max-width: 100%;
-      }
-      .hero-title {
-        font-size: 32px;
-      }
-      .hero-card {
-        padding: 28px 24px;
-      }
-      .student-hub {
-        padding: 24px 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="container">
-      <div class="header-content">
-        
-        <a href="#" class="brand">
-          <div class="brand-badge">☕</div>
-          <div>
-            <div class="brand-title">SLO Coast Eats</div>
-            <div class="brand-subtitle">San Luis Obispo Dining Guide</div>
-          </div>
-        </a>
-
-        <div class="search-wrapper">
-          <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-          <input type="text" id="searchInput" class="search-input" placeholder="Search tri-tip, waffles, espresso, tacos, sushi...">
-        </div>
-
-        <div class="header-actions">
-          <button id="spinModalBtn" class="btn btn-terracotta">
-            <span>🎲</span> Decider
-          </button>
-          <button id="savedModalBtn" class="btn btn-outline">
-            <span>❤️</span> Saved (<span id="savedCount">0</span>)
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-  <main class="container">
-    
-    <section class="hero-section">
-      <div class="hero-card">
-        <div class="hero-pill">🌿 Scout-Inspired Central Coast Guide</div>
-        <h1 class="hero-title">Handpicked Eats from the <span>Hills to the Ocean</span></h1>
-        <p class="hero-desc">
-          Crafted for Cal Poly students and Central Coast locals. Verified dining spots, accurate prices, student discounts, and insider dish recommendations.
-        </p>
-
-        <div class="quick-vibe-bar">
-          <span style="font-size: 12px; font-weight: 800; color: var(--text-muted); margin-right: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Quick Vibes:</span>
-          <button class="vibe-pill" onclick="quickFilter('Student Friendly')">🎓 Cal Poly Favorites</button>
-          <button class="vibe-pill" onclick="quickFilter('Outdoor Patio')">🌿 Sunny Patio</button>
-          <button class="vibe-pill" onclick="quickFilter('Late Night')">🌙 Late Night</button>
-          <button class="vibe-pill" onclick="quickFilter('Ocean Breeze')">🌊 Ocean Views</button>
-          <button class="vibe-pill" onclick="quickFilter('Study Spot')">☕ Study Spots</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="student-hub">
-      <div class="student-hub-header">
-        <div class="student-title-group">
-          <h2>🎓 Cal Poly Student Hub</h2>
-          <div class="student-subtitle">High-value, campus-adjacent, and legendary SLO college tradition spots</div>
-        </div>
-        <button class="btn btn-sage" onclick="filterStudentOnly()">
-          Show All Student Favorites
-        </button>
-      </div>
-
-      <div class="student-grid">
-        <div class="student-card" onclick="openDetailModal('high-st-deli')">
-          <div>
-            <div class="student-card-tag">Legendary SLO Special</div>
-            <div class="student-card-name">High Street Market & Deli</div>
-            <div class="student-card-detail">350 High St, SLO Downtown</div>
-          </div>
-          <div class="student-card-deal">🔥 4:20 PM Discount Special Daily</div>
-        </div>
-
-        <div class="student-card" onclick="openDetailModal('firestone-grill')">
-          <div>
-            <div class="student-card-tag">Tri-Tip Kings</div>
-            <div class="student-card-name">Firestone Grill</div>
-            <div class="student-card-detail">1001 Higuera St, Downtown SLO</div>
-          </div>
-          <div class="student-card-deal">💵 Giant Tri-Tip Sandwich under $15</div>
-        </div>
-
-        <div class="student-card" onclick="openDetailModal('scout-coffee')">
-          <div>
-            <div class="student-card-tag">Campus Adjacent Study Hub</div>
-            <div class="student-card-name">Scout Coffee Co.</div>
-            <div class="student-card-detail">880 Foothill Blvd & Garden St</div>
-          </div>
-          <div class="student-card-deal">☕ House Roasted Coffee & Liege Waffles</div>
-        </div>
-
-        <div class="student-card" onclick="openDetailModal('woodstocks-pizza')">
-          <div>
-            <div class="student-card-tag">Late Night & Trivia</div>
-            <div class="student-card-name">Woodstock's Pizza</div>
-            <div class="student-card-detail">1000 Higuera St, SLO</div>
-          </div>
-          <div class="student-card-deal">🍕 Folded Crust Pizza & Craft Pint Nights</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="categories-section">
-      <div class="category-scroll" id="categoryBar">
-        <!-- Javascript injected category buttons -->
-      </div>
-    </section>
-
-    <section class="filter-panel">
-      
-      <div class="filter-row">
-        <div class="filter-label">Region</div>
-        <div class="filter-group" id="locationFilterGroup">
-          <!-- Location chips injected via JS -->
-        </div>
-      </div>
-
-      <div class="filter-row">
-        <div class="filter-label">Price Range</div>
-        <div class="filter-group" id="priceFilterGroup">
-          <!-- Price chips injected via JS -->
-        </div>
-      </div>
-
-      <div class="filter-row">
-        <div class="filter-label">Atmosphere</div>
-        <div class="filter-group" id="vibeFilterGroup">
-          <!-- Vibe chips injected via JS -->
-        </div>
-      </div>
-
-    </section>
-
-    <div class="results-info">
-      <div class="results-count" id="resultsCount">Showing spots</div>
-      <button class="clear-filters-btn" id="clearFiltersBtn" onclick="resetAllFilters()">Reset All Filters ✕</button>
-    </div>
-
-    <div class="cards-grid" id="cardsGrid">
-      <!-- Spot cards dynamically rendered -->
-    </div>
-
-  </main>
-
-  <div class="modal-overlay" id="detailModal">
-    <div class="modal-box">
-      <button class="close-modal-btn" onclick="closeModal('detailModal')">✕</button>
-      <div id="detailModalBody">
-        <!-- Injected via JS -->
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="spinModal">
-    <div class="modal-box" style="text-align: center;">
-      <button class="close-modal-btn" onclick="closeModal('spinModal')">✕</button>
-      
-      <span class="hero-pill" style="margin-bottom: 12px;">🎲 SLO Food Decider</span>
-      <h2 style="font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Can't decide where to eat?</h2>
-      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">We will pick a spot randomly from your active search filters!</p>
-
-      <div class="spinner-display">
-        <div class="spinner-result-title" id="spinResultTitle">Click spin below!</div>
-        <div class="spinner-result-sub" id="spinResultSub">Ready when you are</div>
-      </div>
-
-      <div style="display: flex; gap: 10px;">
-        <button class="btn btn-sage" id="spinWheelBtn" onclick="runWheelSpin()" style="flex: 1; padding: 14px;">Spin Wheel 🎲</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="savedModal">
-    <div class="modal-box">
-      <button class="close-modal-btn" onclick="closeModal('savedModal')">✕</button>
-      <h2 style="font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; display: flex; align-items: center; gap: 10px;">
-        <span>❤️</span> Your Saved SLO Spots
-      </h2>
-      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Your saved dining list stored on your device.</p>
-
-      <div id="savedListContainer">
-        <!-- Injected via JS -->
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div>
-          <div class="footer-brand">SLO Coast Eats</div>
-          <div style="font-size: 12px; margin-top: 4px; color: var(--text-muted);">San Luis Obispo County Dining Directory for Cal Poly students and Central Coast locals.</div>
-        </div>
-        <div style="font-size: 12px; color: var(--text-muted);">
-          Made with Scout Coffee inspired warmth for San Luis Obispo.
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const spotsData = [
-      {
-        id: "high-st-deli",
-        name: "High Street Market & Deli",
-        location: "SLO Downtown",
-        address: "350 High St, San Luis Obispo, CA 93401",
-        price: "$$",
-        category: "Sandwiches & Delis",
-        tags: ["Outdoor Patio", "Student Friendly", "Local Favorite"],
-        studentDeal: "4:20 PM discount special daily on full sandwiches",
-        rating: "4.8",
-        hours: "11:00 AM to 5:30 PM Daily",
-        phone: "(805) 541-4738",
-        mapUrl: "https://maps.google.com/?cid=1412670074758608573",
-        description: "A historic SLO neighborhood deli stacked high on fresh Dutch Crunch bread with giant portions.",
-        highlight: "Dutch Punch sandwich on Dutch Crunch bread with extra crunch sauce.",
-        popularOrder: "Dutch Punch, High Country Club",
-        vibes: "Funky, energetic, back patio seating"
-      },
-      {
-        id: "firestone-grill",
-        name: "Firestone Grill",
-        location: "SLO Downtown",
-        address: "1001 Higuera St, San Luis Obispo, CA 93401",
-        price: "$",
-        category: "BBQ & Burgers",
-        tags: ["Outdoor Patio", "Student Friendly", "Dog Friendly"],
-        studentDeal: "Massive steak sandwich portion for under $15",
-        rating: "4.6",
-        hours: "11:00 AM to 9:00 PM Daily",
-        phone: "(805) 783-1001",
-        mapUrl: "https://maps.google.com/?cid=15980421730992184843",
-        description: "High-energy sports grill right on Higuera Street with a huge outdoor patio and famous tri-tip sandwiches.",
-        highlight: "Tri-Tip Sandwich with seasoned fries and house ranch.",
-        popularOrder: "Tri-Tip Sandwich, Pig Sandwich, Basket of Fries",
-        vibes: "Lively, spacious patio, great for game days"
-      },
-      {
-        id: "scout-coffee",
-        name: "Scout Coffee Co.",
-        location: "Cal Poly / Foothill",
-        address: "880 Foothill Blvd & 1130 Garden St, SLO",
-        price: "$$",
-        category: "Coffee & Bakery",
-        tags: ["Outdoor Patio", "Student Friendly", "Study Spot"],
-        studentDeal: "Foothill location is steps from campus with ample study space",
-        rating: "4.8",
-        hours: "6:30 AM to 6:30 PM Daily",
-        phone: "(805) 439-2175",
-        mapUrl: "https://maps.google.com/?cid=7508134410832600678",
-        description: "Craft coffee roasters brewing HoneyCo Coffee alongside fresh Liege waffles and house pastries.",
-        highlight: "Wilderness Latte paired with berry Liege Waffle.",
-        popularOrder: "Wilderness Latte, Honey Lavender Latte, Liege Waffle",
-        vibes: "Bright brick walls, aesthetic craft atmosphere"
-      },
-      {
-        id: "splash-cafe",
-        name: "Splash Café",
-        location: "Coastal Beaches",
-        address: "197 Pomeroy Ave, Pismo Beach, CA 93449",
-        price: "$",
-        category: "Seafood & Chowder",
-        tags: ["Student Friendly", "Ocean Breeze", "Local Favorite"],
-        studentDeal: "Hearty sourdough bread bowl meal under $13",
-        rating: "4.5",
-        hours: "9:00 AM to 8:00 PM Daily",
-        phone: "(805) 773-4653",
-        mapUrl: "https://maps.google.com/?cid=15865538939858727526",
-        description: "Famous clam chowder spot steps from Pismo Beach Pier, serving thousands of clam chowder bowls yearly.",
-        highlight: "Clam chowder in a warm sourdough bread bowl topped with seafood sauce.",
-        popularOrder: "Bread Bowl Clam Chowder, Fish Tacos",
-        vibes: "Classic beach town boardwalk aesthetic"
-      },
-      {
-        id: "hidden-kitchen",
-        name: "The Hidden Kitchen",
-        location: "Coastal Beaches",
-        address: "113 N Ocean Ave, Cayucos, CA 93430",
-        price: "$$",
-        category: "Coffee & Bakery",
-        tags: ["Outdoor Patio", "Dog Friendly", "Ocean Breeze"],
-        studentDeal: "100% gluten-free savory blue corn waffle bowls",
-        rating: "4.8",
-        hours: "9:00 AM to 3:00 PM Daily",
-        phone: "(805) 995-7030",
-        mapUrl: "https://maps.google.com/?cid=15752578980066005249",
-        description: "Gluten-free oceanfront cafe in Cayucos known for savory blue corn waffles and smoothies.",
-        highlight: "Morro Blue Corn Waffle topped with avocado, melted cheese, and egg.",
-        popularOrder: "Morro Blue Corn Waffle, Golden Milk",
-        vibes: "Beachy, relaxed ocean view patio"
-      },
-      {
-        id: "sally-loos",
-        name: "Sally Loo's Wholesome Cafe",
-        location: "SLO Downtown",
-        address: "1804 Osos St, San Luis Obispo, CA 93401",
-        price: "$$",
-        category: "Farm-to-Table",
-        tags: ["Outdoor Patio", "Dog Friendly", "Student Friendly"],
-        studentDeal: "Organic breakfast burritos and specialty espresso drinks",
-        rating: "4.4",
-        hours: "8:00 AM to 2:00 PM Daily",
-        phone: "(805) 545-5895",
-        mapUrl: "https://maps.google.com/?cid=6169500071616139992",
-        description: "Community cafe near the train station offering organic farm-fresh breakfast and espresso.",
-        highlight: "Acai bowl and organic breakfast burrito with local farm eggs.",
-        popularOrder: "Acai Bowl, Breakfast Burrito, Matcha Latte",
-        vibes: "Cozy, rustic garden seating, dog friendly"
-      },
-      {
-        id: "woodstocks-pizza",
-        name: "Woodstock's Pizza",
-        location: "SLO Downtown",
-        address: "1000 Higuera St, San Luis Obispo, CA 93401",
-        price: "$$",
-        category: "Pizza & Italian",
-        tags: ["Student Friendly", "Outdoor Patio", "Late Night"],
-        studentDeal: "Pint nights, slice specials, and student organization discounts",
-        rating: "4.5",
-        hours: "11:00 AM to 11:00 PM Daily",
-        phone: "(805) 541-4420",
-        mapUrl: "https://maps.google.com/?q=Woodstocks+Pizza+SLO",
-        description: "The ultimate Cal Poly student staple famous for thick folded crust pizza stuffed with sauce and cheese.",
-        highlight: "Kickin' Carnitas Pizza with folded crust and cinnamon dessert pie.",
-        popularOrder: "Kickin' Carnitas Pizza, Cinnapiez",
-        vibes: "High energy, college sports atmosphere"
-      },
-      {
-        id: "old-san-luis-bbq",
-        name: "Old San Luis BBQ Co.",
-        location: "SLO Downtown",
-        address: "670 Higuera St, San Luis Obispo, CA 93401",
-        price: "$",
-        category: "BBQ & Burgers",
-        tags: ["Student Friendly", "Outdoor Patio", "Late Night"],
-        studentDeal: "Late night window open until 2 AM on weekends",
-        rating: "4.7",
-        hours: "11:00 AM to 9:00 PM (Fri-Sat to 2:00 AM)",
-        phone: "(805) 858-9227",
-        mapUrl: "https://maps.google.com/?q=Old+San+Luis+BBQ+SLO",
-        description: "Authentic Santa Maria style red oak pit barbecue served with pinquito beans and garlic bread.",
-        highlight: "Tri-tip sandwich on toasted garlic sourdough bread.",
-        popularOrder: "Tri-Tip Slider, Pinquito Beans, Garlic Bread",
-        vibes: "Fast casual, oak smoke scent, late night window"
-      },
-      {
-        id: "petra-grill",
-        name: "Petra Mediterranean Pizza & Grill",
-        location: "SLO Downtown",
-        address: "1210 Higuera St, San Luis Obispo, CA 93401",
-        price: "$",
-        category: "Mediterranean",
-        tags: ["Student Friendly", "Late Night", "Dog Friendly"],
-        studentDeal: "Large affordable portions perfect for student budget",
-        rating: "4.6",
-        hours: "11:00 AM to 9:30 PM Daily",
-        phone: "(805) 543-7760",
-        mapUrl: "https://maps.google.com/?q=Petra+Mediterranean+SLO",
-        description: "Casual Mediterranean grill serving tri-tip shawarma wraps, pita pizzas, and homemade garlic sauce.",
-        highlight: "Tri-Tip Shawarma wrap with extra garlic sauce and fries.",
-        popularOrder: "Tri-Tip Shawarma, Gyro Pita, Spicy Garlic Fries",
-        vibes: "Casual, welcoming, fast service"
-      },
-      {
-        id: "goshi-sushi",
-        name: "Goshi Japanese Restaurant",
-        location: "SLO Downtown",
-        address: "570 Higuera St #20, San Luis Obispo, CA 93401",
-        price: "$$$",
-        category: "Asian & Sushi",
-        tags: ["Date Night", "Local Favorite"],
-        studentDeal: "Great for parent dinners and special occasions",
-        rating: "4.7",
-        hours: "5:00 PM to 9:00 PM (Tue to Sun)",
-        phone: "(805) 543-8942",
-        mapUrl: "https://maps.google.com/?q=Goshi+Japanese+Restaurant+SLO",
-        description: "Authentic Japanese sushi spot hidden along Higuera Street, prized by locals for fresh sashimi.",
-        highlight: "Chef choice sashimi combination and authentic chirashi bowl.",
-        popularOrder: "Sashimi Combination, Chirashi Bowl",
-        vibes: "Intimate, serene, authentic"
-      },
-      {
-        id: "fish-gaucho",
-        name: "Fish Gaucho",
-        location: "North County",
-        address: "1244 Park St, Paso Robles, CA 93446",
-        price: "$$",
-        category: "Mexican & Tacos",
-        tags: ["Outdoor Patio", "Date Night", "Late Night"],
-        studentDeal: "Artisan tacos and extensive craft tequila selections",
-        rating: "4.4",
-        hours: "3:00 PM to 9:00 PM Daily",
-        phone: "(805) 239-3333",
-        mapUrl: "https://maps.google.com/?cid=6201708187662978937",
-        description: "Lively Mexican cantina in downtown Paso Robles serving ocean seafood and artisan tacos.",
-        highlight: "Halibut ceviche and fresh agave margaritas.",
-        popularOrder: "Baja Fish Tacos, Halibut Ceviche",
-        vibes: "Vibrant, stylish, bustling"
-      },
-      {
-        id: "luna-red",
-        name: "Luna Red",
-        location: "SLO Downtown",
-        address: "1023 Chorro St, San Luis Obispo, CA 93401",
-        price: "$$",
-        category: "Farm-to-Table",
-        tags: ["Outdoor Patio", "Date Night", "Late Night"],
-        studentDeal: "Happy hour tapas next to historic SLO Mission",
-        rating: "4.4",
-        hours: "12:00 PM to 9:00 PM Daily",
-        phone: "(805) 540-5243",
-        mapUrl: "https://maps.google.com/?q=Luna+Red+SLO",
-        description: "Tapas restaurant with a garden patio right next to Mission San Luis Obispo de Tolosa.",
-        highlight: "Paella Mixta and red sangria on the outdoor patio.",
-        popularOrder: "Paella Mixta, Bacon Wrapped Dates",
-        vibes: "Bohemian, patio dining, mission creek views"
-      }
-    ];
-
-    const categories = [
-      { id: "all", name: "All Categories", icon: "☕" },
-      { id: "Sandwiches & Delis", name: "Sandwiches & Delis", icon: "🥪" },
-      { id: "BBQ & Burgers", name: "BBQ & Burgers", icon: "🥩" },
-      { id: "Coffee & Bakery", name: "Coffee & Bakery", icon: "🧇" },
-      { id: "Seafood & Chowder", name: "Seafood & Chowder", icon: "🐟" },
-      { id: "Mexican & Tacos", name: "Mexican & Tacos", icon: "🌮" },
-      { id: "Asian & Sushi", name: "Asian & Sushi", icon: "🍣" },
-      { id: "Pizza & Italian", name: "Pizza & Italian", icon: "🍕" },
-      { id: "Mediterranean", name: "Mediterranean", icon: "🥙" },
-      { id: "Farm-to-Table", name: "Farm-to-Table", icon: "🌱" }
-    ];
-
-    const locations = ["All Locations", "SLO Downtown", "Cal Poly / Foothill", "Coastal Beaches", "North County"];
-    const prices = ["Any Price", "$", "$$", "$$$"];
-    const vibes = ["Student Friendly", "Outdoor Patio", "Late Night", "Ocean Breeze", "Study Spot", "Date Night", "Dog Friendly"];
-
-    let currentCategory = "all";
-    let currentLocation = "All Locations";
-    let currentPrice = "Any Price";
-    let selectedVibes = [];
-    let searchQuery = "";
-    let savedSpotIds = JSON.parse(localStorage.getItem("slo_saved_spots") || "[]");
-
-    function initFiltersUI() {
-      const catBar = document.getElementById("categoryBar");
-      catBar.innerHTML = categories.map(cat => `
-        <button class="cat-btn ${currentCategory === cat.id ? 'active' : ''}" onclick="selectCategory('${cat.id}')">
-          <span>${cat.icon}</span>
-          <span>${cat.name}</span>
-        </button>
-      `).join("");
-
-      const locGroup = document.getElementById("locationFilterGroup");
-      locGroup.innerHTML = locations.map(loc => `
-        <button class="filter-chip ${currentLocation === loc ? 'active' : ''}" onclick="selectLocation('${loc}')">
-          ${loc}
-        </button>
-      `).join("");
-
-      const priceGroup = document.getElementById("priceFilterGroup");
-      priceGroup.innerHTML = prices.map(p => `
-        <button class="filter-chip ${currentPrice === p ? 'active' : ''}" onclick="selectPrice('${p}')">
-          ${p}
-        </button>
-      `).join("");
-
-      const vibeGroup = document.getElementById("vibeFilterGroup");
-      vibeGroup.innerHTML = vibes.map(v => `
-        <button class="filter-chip ${selectedVibes.includes(v) ? 'active' : ''}" onclick="toggleVibe('${v}')">
-          ${v}
-        </button>
-      `).join("");
-
-      updateSavedCount();
-    }
-
-    function getFilteredSpots() {
-      return spotsData.filter(spot => {
-        if (currentCategory !== "all" && spot.category !== currentCategory) return false;
-        if (currentLocation !== "All Locations" && spot.location !== currentLocation) return false;
-        if (currentPrice !== "Any Price" && spot.price !== currentPrice) return false;
-        if (selectedVibes.length > 0) {
-          const hasVibe = selectedVibes.every(v => spot.tags.includes(v));
-          if (!hasVibe) return false;
-        }
-        if (searchQuery.trim() !== "") {
-          const q = searchQuery.toLowerCase();
-          const matchName = spot.name.toLowerCase().includes(q);
-          const matchDesc = spot.description.toLowerCase().includes(q);
-          const matchHighlight = spot.highlight.toLowerCase().includes(q);
-          const matchCategory = spot.category.toLowerCase().includes(q);
-          const matchLocation = spot.location.toLowerCase().includes(q);
-          if (!matchName && !matchDesc && !matchHighlight && !matchCategory && !matchLocation) return false;
-        }
-        return true;
-      });
-    }
-
-    function renderCards() {
-      const filtered = getFilteredSpots();
-      const grid = document.getElementById("cardsGrid");
-      const resultsCount = document.getElementById("resultsCount");
-      const clearBtn = document.getElementById("clearFiltersBtn");
-
-      const isFiltered = currentCategory !== "all" || currentLocation !== "All Locations" || currentPrice !== "Any Price" || selectedVibes.length > 0 || searchQuery !== "";
-      clearBtn.style.display = isFiltered ? "block" : "none";
-
-      resultsCount.textContent = `Showing ${filtered.length} dining ${filtered.length === 1 ? 'spot' : 'spots'}`;
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-icon">🥑</div>
-            <h3 style="font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">No spots match your criteria</h3>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Try resetting vibe filters or expanding your location range.</p>
-            <button class="btn btn-sage" onclick="resetAllFilters()">Clear All Filters</button>
-          </div>
-        `;
-        return;
-      }
-
-      grid.innerHTML = filtered.map(spot => {
-        const isSaved = savedSpotIds.includes(spot.id);
-        return `
-          <div class="spot-card">
-            <div>
-              <div class="spot-card-header">
-                <span class="spot-cat-badge">${spot.category}</span>
-                <button class="save-heart-btn ${isSaved ? 'saved' : ''}" onclick="toggleSaveSpot('${spot.id}')" title="Save spot">
-                  <svg width="22" height="22" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
-                </button>
-              </div>
-
-              <h3 class="spot-name">${spot.name}</h3>
-              
-              <div class="spot-meta">
-                <span>📍 ${spot.location}</span>
-                <span>•</span>
-                <span style="color: var(--sage-dark); font-weight: 800;">${spot.price}</span>
-                <span>•</span>
-                <span class="spot-rating">★ ${spot.rating}</span>
-              </div>
-
-              <p class="spot-desc">${spot.description}</p>
-
-              <div class="spot-highlight-box">
-                <strong>Must Order:</strong> ${spot.highlight}
-              </div>
-            </div>
-
-            <div>
-              <div class="spot-tags-row">
-                ${spot.tags.map(t => `<span class="mini-tag">${t}</span>`).join("")}
-              </div>
-
-              <div class="spot-card-footer">
-                <button class="btn btn-sage" onclick="openDetailModal('${spot.id}')" style="flex: 1;">
-                  Spot Info & Menu →
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function selectCategory(catId) {
-      currentCategory = catId;
-      initFiltersUI();
-      renderCards();
-    }
-
-    function selectLocation(loc) {
-      currentLocation = loc;
-      initFiltersUI();
-      renderCards();
-    }
-
-    function selectPrice(p) {
-      currentPrice = p;
-      initFiltersUI();
-      renderCards();
-    }
-
-    function toggleVibe(v) {
-      if (selectedVibes.includes(v)) {
-        selectedVibes = selectedVibes.filter(item => item !== v);
-      } else {
-        selectedVibes.push(v);
-      }
-      initFiltersUI();
-      renderCards();
-    }
-
-    function quickFilter(vibe) {
-      if (!selectedVibes.includes(vibe)) {
-        selectedVibes.push(vibe);
-      } else {
-        selectedVibes = selectedVibes.filter(v => v !== vibe);
-      }
-      initFiltersUI();
-      renderCards();
-    }
-
-    function filterStudentOnly() {
-      currentCategory = "all";
-      currentLocation = "All Locations";
-      currentPrice = "Any Price";
-      selectedVibes = ["Student Friendly"];
-      initFiltersUI();
-      renderCards();
-    }
-
-    function resetAllFilters() {
-      currentCategory = "all";
-      currentLocation = "All Locations";
-      currentPrice = "Any Price";
-      selectedVibes = [];
-      searchQuery = "";
-      document.getElementById("searchInput").value = "";
-      initFiltersUI();
-      renderCards();
-    }
-
-    function toggleSaveSpot(id) {
-      if (savedSpotIds.includes(id)) {
-        savedSpotIds = savedSpotIds.filter(i => i !== id);
-      } else {
-        savedSpotIds.push(id);
-      }
-      localStorage.setItem("slo_saved_spots", JSON.stringify(savedSpotIds));
-      updateSavedCount();
-      renderCards();
-      if (document.getElementById("savedModal").classList.contains("active")) {
-        renderSavedList();
-      }
-    }
-
-    function updateSavedCount() {
-      document.getElementById("savedCount").textContent = savedSpotIds.length;
-    }
-
-    function openDetailModal(id) {
-      const spot = spotsData.find(s => s.id === id);
-      if (!spot) return;
-
-      const isSaved = savedSpotIds.includes(spot.id);
-      const container = document.getElementById("detailModalBody");
-
-      container.innerHTML = `
-        <span class="spot-cat-badge" style="margin-bottom: 12px;">${spot.category} • ${spot.price}</span>
-        <h2 style="font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">${spot.name}</h2>
-        <div style="font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 18px;">📍 ${spot.address}</div>
-
-        <p style="font-size: 15px; color: var(--text-main); line-height: 1.6; margin-bottom: 20px;">${spot.description}</p>
-
-        <div style="background-color: var(--card-alt); border-radius: var(--radius-lg); padding: 18px; margin-bottom: 20px; font-size: 13px; border: 1px solid var(--border-subtle);">
-          <div style="margin-bottom: 8px;">💡 <strong>Must-Try Dish:</strong> ${spot.highlight}</div>
-          <div style="margin-bottom: 8px;">✨ <strong>Popular Orders:</strong> ${spot.popularOrder}</div>
-          <div style="margin-bottom: 8px;">🎓 <strong>Student Highlight:</strong> ${spot.studentDeal}</div>
-          <div>🌿 <strong>Atmosphere:</strong> ${spot.vibes}</div>
-        </div>
-
-        <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px; border-top: 1px solid var(--border-color); padding-top: 16px;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-            <span><strong>Hours:</strong></span>
-            <span>${spot.hours}</span>
-          </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span><strong>Phone:</strong></span>
-            <span>${spot.phone}</span>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 10px;">
-          <a href="${spot.mapUrl}" target="_blank" class="btn btn-sage" style="flex: 1; padding: 14px;">
-            Google Maps & Menu Directions 📍
-          </a>
-          <button class="btn btn-outline" onclick="toggleSaveSpot('${spot.id}'); openDetailModal('${spot.id}');">
-            ${isSaved ? '❤️ Saved' : '🤍 Save Spot'}
-          </button>
-        </div>
-      `;
-
-      openModal('detailModal');
-    }
-
-    function runWheelSpin() {
-      const candidates = getFilteredSpots();
-      const titleEl = document.getElementById("spinResultTitle");
-      const subEl = document.getElementById("spinResultSub");
-      const btn = document.getElementById("spinWheelBtn");
-
-      if (candidates.length === 0) {
-        titleEl.textContent = "No spots match filters!";
-        subEl.textContent = "Try clearing search filters first.";
-        return;
-      }
-
-      btn.disabled = true;
-      btn.style.opacity = "0.6";
-
-      let counter = 0;
-      const maxTicks = 20;
-      const interval = setInterval(() => {
-        const rand = candidates[Math.floor(Math.random() * candidates.length)];
-        titleEl.textContent = rand.name;
-        subEl.textContent = `${rand.category} • ${rand.location}`;
-        counter++;
-
-        if (counter >= maxTicks) {
-          clearInterval(interval);
-          const finalSpot = candidates[Math.floor(Math.random() * candidates.length)];
-          titleEl.textContent = "🎉 " + finalSpot.name;
-          subEl.textContent = `${finalSpot.category} • ${finalSpot.location}`;
-          btn.disabled = false;
-          btn.style.opacity = "1";
-        }
-      }, 90);
-    }
-
-    function renderSavedList() {
-      const container = document.getElementById("savedListContainer");
-      const savedSpots = spotsData.filter(s => savedSpotIds.includes(s.id));
-
-      if (savedSpots.length === 0) {
-        container.innerHTML = `
-          <div style="text-align: center; padding: 36px 0; color: var(--text-muted); font-size: 13px;">
-            No saved spots yet. Click the heart icon on any restaurant card to save it!
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = savedSpots.map(spot => `
-        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px; border-radius: var(--radius-md); background-color: var(--card-alt); margin-bottom: 12px; border: 1px solid var(--border-subtle);">
-          <div>
-            <div style="font-family: var(--font-serif); font-weight: 700; font-size: 16px; color: var(--text-main);">${spot.name}</div>
-            <div style="font-size: 12px; color: var(--text-muted);">${spot.category} • ${spot.location}</div>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn btn-sage" onclick="closeModal('savedModal'); openDetailModal('${spot.id}');" style="padding: 8px 14px; font-size: 12px;">View</button>
-            <button class="btn btn-outline" onclick="toggleSaveSpot('${spot.id}')" style="padding: 8px 14px; font-size: 12px; color: var(--terracotta);">Remove</button>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function openModal(id) {
-      document.getElementById(id).classList.add("active");
-    }
-
-    function closeModal(id) {
-      document.getElementById(id).classList.remove("active");
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      initFiltersUI();
-      renderCards();
-
-      document.getElementById("searchInput").addEventListener("input", (e) => {
-        searchQuery = e.target.value;
-        renderCards();
-      });
-
-      document.getElementById("spinModalBtn").addEventListener("click", () => openModal("spinModal"));
-      document.getElementById("savedModalBtn").addEventListener("click", () => {
-        renderSavedList();
-        openModal("savedModal");
-      });
-
-      document.querySelectorAll(".modal-overlay").forEach(overlay => {
-        overlay.addEventListener("click", (e) => {
-          if (e.target === overlay) {
-            overlay.classList.remove("active");
-          }
-        });
-      });
-    });
-  </script>
-</body>
-</html>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  background: var(--sage);
+  border-bottom: 3px solid var(--forest);
+  padding: 22px 5vw;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+}
+
+.brand span { color: var(--clay); }
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.nav-links a:hover { color: var(--clay); }
+
+.hero {
+  background: var(--sage);
+  padding: 58px 5vw 66px;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 42px;
+  align-items: end;
+}
+
+.eyebrow {
+  color: var(--clay);
+  font-size: 0.77rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1 {
+  max-width: 800px;
+  margin: 12px 0 20px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  line-height: 0.91;
+  letter-spacing: -0.075em;
+}
+
+.hero p {
+  max-width: 620px;
+  font-size: 1.07rem;
+  line-height: 1.6;
+}
+
+.hero-note {
+  background: var(--forest);
+  color: white;
+  padding: 24px;
+  border: 2px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--clay);
+}
+
+.hero-note strong {
+  display: block;
+  color: var(--gold);
+  font-size: 1.8rem;
+  font-family: "Fraunces", Georgia, serif;
+}
+
+.hero-note p {
+  margin: 9px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 58px 5vw 80px;
+}
+
+.filter-panel {
+  margin-bottom: 58px;
+  padding: 22px;
+  background: white;
+  border: 2px solid var(--forest);
+}
+
+.filter-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: baseline;
+  margin-bottom: 17px;
+}
+
+.filter-top h2 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.8rem;
+  letter-spacing: -0.045em;
+}
+
+.filter-top small { color: #506257; }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter {
+  appearance: none;
+  padding: 9px 14px;
+  border: 1px solid var(--forest);
+  border-radius: 0;
+  background: var(--cream);
+  color: var(--forest);
+  font: 700 0.84rem "DM Sans", Arial, sans-serif;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+.filter:hover,
+.filter.active {
+  color: white;
+  background: var(--forest);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.section-heading h2 {
+  margin: 6px 0 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.1rem, 4vw, 3.5rem);
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+}
+
+.section-heading p {
+  max-width: 340px;
+  margin: 0;
+  color: #506257;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.restaurant-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  border: 2px solid var(--forest);
+  background: white;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 7px 7px 0 var(--sage-deep);
+}
+
+.card-banner {
+  min-height: 96px;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid var(--forest);
+  background: var(--sand);
+}
+
+.card:nth-child(2) .card-banner,
+.card:nth-child(5) .card-banner { background: #f4d9a4; }
+
+.card:nth-child(3) .card-banner,
+.card:nth-child(6) .card-banner { background: #d5e4cc; }
+
+.card:nth-child(4) .card-banner { background: #e6c1b0; }
+
+.place-number {
+  color: var(--clay);
+  font: 700 0.78rem "DM Sans", Arial, sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.price {
+  padding: 5px 8px;
+  background: var(--forest);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.card h3 {
+  margin-bottom: 7px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.55rem;
+  letter-spacing: -0.045em;
+}
+
+.location {
+  margin-bottom: 15px;
+  color: #53635a;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.description {
+  margin-bottom: 18px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.tag {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  background: #f7f8f3;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.card-footer {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.menu-link {
+  color: var(--clay);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.college {
+  margin-top: 78px;
+  padding: 38px;
+  border: 2px solid var(--forest);
+  background: var(--forest);
+  color: white;
+}
+
+.college-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 42px;
+}
+
+.college h2 {
+  margin: 8px 0 16px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2.3rem, 4vw, 4.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.065em;
+}
+
+.college-intro {
+  color: #dce8d4;
+  line-height: 1.6;
+}
+
+.deal-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid #69806c;
+}
+
+.deal {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid #69806c;
+}
+
+.deal h3 {
+  margin-bottom: 5px;
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.deal p {
+  margin: 0;
+  color: #e5eee1;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.deal-price {
+  color: white;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.info {
+  margin-top: 58px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.info-box {
+  padding: 25px;
+  border: 2px solid var(--forest);
+  background: var(--sand);
+}
+
+.info-box:last-child { background: var(--sage); }
+
+.info-box h3 {
+  margin-bottom: 8px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+footer {
+  padding: 28px 5vw;
+  border-top: 2px solid var(--forest);
+  background: var(--cream);
+  font-size: 0.8rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #53635a;
+}
+
+@media (max-width: 800px) {
+  .hero-inner,
+  .college-grid { grid-template-columns: 1fr; }
+
+  .restaurant-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .hero-note { max-width: 410px; }
+
+  .nav-links { display: none; }
+}
+
+@media (max-width: 560px) {
+  .restaurant-grid,
+  .info { grid-template-columns: 1fr; }
+
+  .hero { padding-top: 42px; }
+
+  main { padding-top: 38px; }
+
+  .college { padding: 25px; }
+
+  .section-heading,
+  .footer-inner { display: block; }
+
+  .section-heading p { margin-top: 14px; }
+
+  .footer-inner p + p { margin-top: 8px; }
+}
