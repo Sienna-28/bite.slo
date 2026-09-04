@@ -20,13 +20,8 @@
       --line: #b9c9b0;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -35,14 +30,8 @@
       font-family: "DM Sans", Arial, sans-serif;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
 
     .site-header {
       position: sticky;
@@ -63,10 +52,7 @@
       margin: 0 auto;
     }
 
-    .brand,
-    h1,
-    h2,
-    h3 {
+    .brand, h1, h2, h3 {
       font-family: Georgia, "Times New Roman", serif;
     }
 
@@ -76,33 +62,17 @@
       letter-spacing: -0.06em;
     }
 
-    .brand span {
-      color: var(--clay);
-    }
+    .brand span { color: var(--clay); }
 
     .nav-links {
       display: flex;
-      align-items: center;
       gap: 18px;
       font-size: 0.88rem;
       font-weight: 700;
     }
 
-    .nav-links a {
-      padding: 8px 2px;
-      border-bottom: 2px solid transparent;
-    }
-
     .nav-links a:hover {
       color: var(--clay);
-      border-color: var(--clay);
-    }
-
-    .nav-button {
-      padding: 10px 14px;
-      color: white;
-      background: var(--forest);
-      border: 1px solid var(--forest);
     }
 
     .hero {
@@ -128,12 +98,7 @@
       text-transform: uppercase;
     }
 
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
+    h1, h2, h3, p { margin-top: 0; }
 
     h1 {
       max-width: 850px;
@@ -182,7 +147,6 @@
       color: var(--gold);
       font-family: Georgia, "Times New Roman", serif;
       font-size: 1.55rem;
-      letter-spacing: -0.04em;
     }
 
     .hero-card-content p {
@@ -206,44 +170,27 @@
       border-bottom: 2px solid var(--forest);
     }
 
-    .section-tab {
-      padding: 11px 15px;
+    .section-tab, .filter {
+      padding: 9px 12px;
       color: var(--forest);
       cursor: pointer;
-      background: transparent;
+      background: var(--cream);
       border: 1px solid var(--forest);
       border-radius: 0;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      transition: 0.2s ease;
     }
 
+    .section-tab.active,
     .section-tab:hover,
-    .section-tab.active {
+    .filter.active,
+    .filter:hover {
       color: white;
       background: var(--forest);
     }
 
-    .tab-panel {
-      display: none;
-    }
-
-    .tab-panel.active {
-      display: block;
-      animation: fade 0.25s ease;
-    }
-
-    @keyframes fade {
-      from {
-        opacity: 0;
-        transform: translateY(6px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
     .filter-panel {
       padding: 24px;
@@ -252,21 +199,21 @@
       border: 2px solid var(--forest);
     }
 
-    .filter-top {
+    .filter-top, .section-heading {
       display: flex;
-      align-items: baseline;
+      align-items: end;
       justify-content: space-between;
-      gap: 20px;
-      margin-bottom: 18px;
+      gap: 22px;
     }
+
+    .filter-top { align-items: baseline; }
 
     .filter-top h2 {
       margin: 0;
       font-size: 1.9rem;
-      letter-spacing: -0.045em;
     }
 
-    .filter-top small {
+    .filter-top small, .section-heading p {
       color: #506257;
     }
 
@@ -292,29 +239,7 @@
       gap: 8px;
     }
 
-    .filter {
-      padding: 8px 12px;
-      color: var(--forest);
-      cursor: pointer;
-      background: var(--cream);
-      border: 1px solid var(--line);
-      border-radius: 0;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .filter:hover,
-    .filter.active {
-      color: white;
-      background: var(--forest);
-      border-color: var(--forest);
-    }
-
     .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 22px;
       margin-bottom: 26px;
     }
 
@@ -328,12 +253,11 @@
     .section-heading p {
       max-width: 365px;
       margin: 0;
-      color: #506257;
       font-size: 0.92rem;
       line-height: 1.55;
     }
 
-    .restaurant-grid {
+    .restaurant-grid, .deal-grid, .guide-grid, .nearby-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
@@ -353,9 +277,7 @@
       box-shadow: 8px 8px 0 var(--sage-dark);
     }
 
-    .card.hidden {
-      display: none;
-    }
+    .card.hidden, .nearby-card.hidden { display: none; }
 
     .card-image {
       position: relative;
@@ -370,15 +292,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
     }
 
-    .card:hover .card-image img {
-      transform: scale(1.04);
-    }
-
-    .card-number,
-    .price {
+    .card-number, .price {
       position: absolute;
       top: 10px;
       padding: 5px 7px;
@@ -407,10 +323,9 @@
       padding: 20px;
     }
 
-    .card h3 {
-      margin-bottom: 6px;
-      font-size: 1.48rem;
-      line-height: 1.1;
+    .card h3, .deal-card h3, .nearby-card h3, .guide-card h3, .info-box h3 {
+      margin: 12px 0 8px;
+      font-size: 1.4rem;
       letter-spacing: -0.04em;
     }
 
@@ -468,12 +383,9 @@
       border: 2px solid var(--forest);
     }
 
-    .empty-state.show {
-      display: block;
-    }
+    .empty-state.show { display: block; }
 
-    .college-hero,
-    .nearby-hero {
+    .college-hero, .nearby-hero {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
       overflow: hidden;
@@ -483,50 +395,31 @@
       border: 2px solid var(--forest);
     }
 
-    .college-copy,
-    .nearby-copy {
-      padding: 42px;
-    }
+    .college-copy, .nearby-copy { padding: 42px; }
 
-    .college-copy h2,
-    .nearby-copy h2 {
+    .college-copy h2, .nearby-copy h2 {
       margin: 8px 0 16px;
       font-size: clamp(2.4rem, 4vw, 4.1rem);
       line-height: 1.03;
       letter-spacing: -0.055em;
     }
 
-    .college-copy p,
-    .nearby-copy p {
-      max-width: 460px;
+    .college-copy p, .nearby-copy p {
       margin: 0;
       color: #dce8d4;
       line-height: 1.65;
     }
 
-    .college-image,
-    .nearby-image {
-      min-height: 315px;
-    }
+    .college-image, .nearby-image { min-height: 315px; }
 
-    .college-image img,
-    .nearby-image img {
+    .college-image img, .nearby-image img {
       display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .deal-grid,
-    .guide-grid,
-    .nearby-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .deal-card,
-    .nearby-card {
+    .deal-card, .nearby-card {
       min-height: 210px;
       padding: 22px;
       background: white;
@@ -534,35 +427,18 @@
     }
 
     .deal-card:nth-child(2),
-    .nearby-card:nth-child(2) {
-      background: var(--sand);
-    }
+    .nearby-card:nth-child(2) { background: var(--sand); }
 
     .deal-card:nth-child(3),
-    .nearby-card:nth-child(3) {
-      background: var(--sage);
-    }
+    .nearby-card:nth-child(3) { background: var(--sage); }
 
-    .deal-card h3,
-    .nearby-card h3,
-    .guide-card h3,
-    .info-box h3 {
-      margin: 12px 0 8px;
-      font-size: 1.4rem;
-      letter-spacing: -0.04em;
-    }
-
-    .deal-card p,
-    .nearby-card p,
-    .guide-card p,
-    .info-box p {
+    .deal-card p, .nearby-card p, .guide-card p, .info-box p {
       margin: 0;
       font-size: 0.88rem;
       line-height: 1.55;
     }
 
-    .deal-price,
-    .transit-label {
+    .deal-price, .transit-label {
       color: var(--clay);
       font-size: 0.82rem;
       font-weight: 700;
@@ -589,9 +465,7 @@
       border-bottom: 2px solid var(--forest);
     }
 
-    .guide-card div {
-      padding: 20px;
-    }
+    .guide-card div { padding: 20px; }
 
     .how-it-works {
       display: grid;
@@ -605,13 +479,7 @@
       border: 2px solid var(--forest);
     }
 
-    .info-box:last-child {
-      background: var(--sage);
-    }
-
-    .info-box h3 {
-      font-size: 1.6rem;
-    }
+    .info-box:last-child { background: var(--sage); }
 
     .standards-list {
       padding-left: 18px;
@@ -637,73 +505,38 @@
     }
 
     @media (max-width: 900px) {
-      .hero-inner,
-      .college-hero,
-      .nearby-hero {
+      .hero-inner, .college-hero, .nearby-hero {
         grid-template-columns: 1fr;
       }
 
-      .hero-card {
-        max-width: 620px;
-      }
+      .hero-card { max-width: 620px; }
 
-      .restaurant-grid,
-      .deal-grid,
-      .guide-grid,
-      .nearby-grid {
+      .restaurant-grid, .deal-grid, .guide-grid, .nearby-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 600px) {
-      .site-header {
-        position: static;
-      }
+      .site-header { position: static; }
+      .nav-links { display: none; }
+      .hero { padding: 54px 5vw 68px; }
+      h1 { font-size: clamp(3rem, 15vw, 4.5rem); }
 
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 54px 5vw 68px;
-      }
-
-      h1 {
-        font-size: clamp(3rem, 15vw, 4.5rem);
-      }
-
-      main {
-        padding-top: 36px;
-      }
-
-      .filter-top,
-      .section-heading,
-      .footer-inner {
+      .filter-top, .section-heading, .footer-inner {
         display: block;
       }
 
-      .filter-top small,
-      .section-heading p {
+      .filter-top small, .section-heading p {
         display: block;
         margin-top: 10px;
       }
 
-      .restaurant-grid,
-      .deal-grid,
-      .guide-grid,
-      .nearby-grid,
-      .how-it-works {
+      .restaurant-grid, .deal-grid, .guide-grid, .nearby-grid, .how-it-works {
         grid-template-columns: 1fr;
       }
 
-      .college-copy,
-      .nearby-copy {
-        padding: 28px;
-      }
-
-      .footer-inner p + p {
-        margin-top: 8px;
-      }
+      .college-copy, .nearby-copy { padding: 28px; }
+      .footer-inner p + p { margin-top: 8px; }
     }
   </style>
 </head>
@@ -711,7 +544,6 @@
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="#explore">bite<span>.</span>slo</a>
-
       <div class="nav-links">
         <a href="#explore" data-tab-link="explore">Explore</a>
         <a href="#nearby" data-tab-link="nearby">Near Campuses</a>
@@ -781,6 +613,18 @@
             <button class="filter" type="button" data-filter="southcounty">South County</button>
           </div>
         </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Cuisine</span>
+          <div class="filters">
+            <button class="filter" type="button" data-filter="american">American</button>
+            <button class="filter" type="button" data-filter="asian">Asian</button>
+            <button class="filter" type="button" data-filter="coffee">Coffee & Bakery</button>
+            <button class="filter" type="button" data-filter="italian">Italian & Pizza</button>
+            <button class="filter" type="button" data-filter="mediterranean">Mediterranean</button>
+            <button class="filter" type="button" data-filter="seafood">Seafood</button>
+          </div>
+        </div>
       </div>
 
       <div class="section-heading">
@@ -791,334 +635,16 @@
         <p>Browse by region, cuisine, atmosphere, and a practical per-person spending range.</p>
       </div>
 
-      <div class="restaurant-grid" id="restaurantGrid">
-        <article class="card" data-tags="under15 coffee casual vegetarian slo">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" alt="Latte and pastry">
-            <span class="card-number">01 / COFFEE</span>
-            <span class="price">$</span>
-          </div>
-          <div class="card-body">
-            <h3>Scout Coffee</h3>
-            <div class="location">San Luis Obispo</div>
-            <p class="description">Specialty coffee, scratch-made pastries, and a warm design-focused setting with locations downtown, on Foothill, and at Cal Poly.</p>
-            <div class="tags">
-              <span class="tag">Coffee & Pastries</span>
-              <span class="tag">Study Spot</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $6–18</span>
-              <a class="menu-link" href="https://scoutcoffeeco.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="under15 casual family slo">
-          <div class="card-image">
-            <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/slocal/firestone2_C78446C2-5056-A36A-0B78D9B1463F69EA-c78446455056a36_c7844707-5056-a36a-0bf36f89e4be60d9.png" alt="Firestone Grill tri-tip sandwich">
-            <span class="card-number">02 / AMERICAN</span>
-            <span class="price">$</span>
-          </div>
-          <div class="card-body">
-            <h3>Firestone Grill</h3>
-            <div class="location">San Luis Obispo</div>
-            <p class="description">A downtown classic for tri-tip sandwiches, burgers, salads, fries, and quick counter-service meals with generous portions.</p>
-            <div class="tags">
-              <span class="tag">Family Friendly</span>
-              <span class="tag">Central Coast Classic</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $12–22</span>
-              <a class="menu-link" href="https://www.firestonegrill.com/menu/" target="_blank" rel="noopener">View Menu</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="fifteen30 casual family vegetarian slo">
-          <div class="card-image">
-            <img src="https://cdn.prod.website-files.com/62a02ba3a283f600119050df/62c5152409e0c995ca4d2dc4_3S1A3283_colorcorrected_.jpg" alt="Mediterranean dishes from Petra Mediterranean Pizza and Grill">
-            <span class="card-number">03 / MEDITERRANEAN</span>
-            <span class="price">$</span>
-          </div>
-          <div class="card-body">
-            <h3>Petra Mediterranean Pizza & Grill</h3>
-            <div class="location">San Luis Obispo</div>
-            <p class="description">A flexible stop for shawarma, falafel, kebabs, salads, wraps, and pizza. A strong choice for mixed-diet groups.</p>
-            <div class="tags">
-              <span class="tag">Vegetarian Friendly</span>
-              <span class="tag">Group Friendly</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $13–25</span>
-              <a class="menu-link" href="https://www.eatpetra.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="fifteen30 date vegetarian slo">
-          <div class="card-image">
-            <img src="https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/275efa0e-2664-41d3-9261-42fa46ca7ded.jpg" alt="Thai dishes from Thai Palace San Luis Obispo">
-            <span class="card-number">04 / THAI</span>
-            <span class="price">$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Thai Palace</h3>
-            <div class="location">San Luis Obispo</div>
-            <p class="description">A longtime local stop for curries, noodles, stir-fries, and adjustable spice levels in the center of downtown.</p>
-            <div class="tags">
-              <span class="tag">Date Night</span>
-              <span class="tag">Vegetarian Friendly</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $15–28</span>
-              <a class="menu-link" href="https://thaipalaceslo.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="fifteen30 thirtyplus date family outdoor vegetarian slo">
-          <div class="card-image">
-            <img src="https://images.squarespace-cdn.com/content/v1/59ceed0d8a02c7512beed014/1770074823530-B07622BGJASTLYHNG9O9/lamb.png?format=1500w" alt="Signature ribeye dish at Novo Restaurant">
-            <span class="card-number">05 / CALIFORNIA</span>
-            <span class="price">$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Novo Restaurant & Lounge</h3>
-            <div class="location">San Luis Obispo</div>
-            <p class="description">Seasonal California cooking in a distinctive creekside setting, with lunch, dinner, cocktails, and broad options for different tastes.</p>
-            <div class="tags">
-              <span class="tag">Creekside Patio</span>
-              <span class="tag">Date Night</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $22–45</span>
-              <a class="menu-link" href="https://novorestaurant.com/menus/" target="_blank" rel="noopener">View Menus</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="fifteen30 thirtyplus date slo">
-          <div class="card-image">
-            <img src="https://resizer.otstatic.com/v2/photos/xlarge/1/68882770.webp" alt="Sushi and sashimi at Goshi Japanese Restaurant">
-            <span class="card-number">06 / JAPANESE</span>
-            <span class="price">$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Goshi Japanese Restaurant</h3>
-            <div class="location">San Luis Obispo</div>
-            <p class="description">A respected local sushi restaurant with nigiri, rolls, cooked Japanese dishes, and a more intimate dinner atmosphere.</p>
-            <div class="tags">
-              <span class="tag">Sushi</span>
-              <span class="tag">Reservations Helpful</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $25–50</span>
-              <a class="menu-link" href="https://www.goshislo.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="under15 casual vegetarian slo">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1000&q=85" alt="Fresh deli sandwich">
-            <span class="card-number">07 / DELI</span>
-            <span class="price">$</span>
-          </div>
-          <div class="card-body">
-            <h3>High Street Deli</h3>
-            <div class="location">San Luis Obispo</div>
-            <p class="description">A favorite for large, creative sandwiches, vegetarian choices, and daily sandwich specials in a relaxed neighborhood setting.</p>
-            <div class="tags">
-              <span class="tag">Daily Specials</span>
-              <span class="tag">Quick & Casual</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $13–18</span>
-              <a class="menu-link" href="https://www.highstdeli.com/high-st-menus/" target="_blank" rel="noopener">View Menu</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="fifteen30 date family slo">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=85" alt="Italian pasta dish">
-            <span class="card-number">08 / ITALIAN</span>
-            <span class="price">$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Flour House</h3>
-            <div class="location">San Luis Obispo</div>
-            <p class="description">House-made pasta, wood-fired pizza, and seasonal Italian cooking in a polished but approachable downtown dining room.</p>
-            <div class="tags">
-              <span class="tag">Date Night</span>
-              <span class="tag">Pizza & Pasta</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $20–40</span>
-              <a class="menu-link" href="https://flourhouseslo.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="under15 fifteen30 casual family coast">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1544982503-9f984c14501a?auto=format&fit=crop&w=1000&q=85" alt="Fish and chips by the coast">
-            <span class="card-number">09 / SEAFOOD</span>
-            <span class="price">$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Giovanni's Fish Market</h3>
-            <div class="location">Morro Bay</div>
-            <p class="description">A waterfront market and restaurant known for fish and chips, chowder, seafood tacos, poke bowls, and casual family meals.</p>
-            <div class="tags">
-              <span class="tag">Waterfront</span>
-              <span class="tag">Family Friendly</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $15–32</span>
-              <a class="menu-link" href="https://www.giosfish.com/restaurants" target="_blank" rel="noopener">View Menu</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="under15 casual family coast">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=1000&q=85" alt="Breakfast cinnamon roll">
-            <span class="card-number">10 / BAKERY</span>
-            <span class="price">$</span>
-          </div>
-          <div class="card-body">
-            <h3>Old West Cinnamon Rolls</h3>
-            <div class="location">Pismo Beach</div>
-            <p class="description">A Pismo Beach morning staple for oversized cinnamon rolls and sweet breakfast treats before a beach walk.</p>
-            <div class="tags">
-              <span class="tag">Breakfast</span>
-              <span class="tag">Beach Day</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $6–15</span>
-              <a class="menu-link" href="https://oldwestcinnamonrolls.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="fifteen30 thirtyplus date southcounty outdoor">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=85" alt="Seasonal California dinner">
-            <span class="card-number">11 / CALIFORNIA</span>
-            <span class="price">$$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Ember</h3>
-            <div class="location">Arroyo Grande</div>
-            <p class="description">A wood-fired restaurant focused on seasonal Central Coast ingredients, with a carefully composed dinner menu and warm atmosphere.</p>
-            <div class="tags">
-              <span class="tag">Date Night</span>
-              <span class="tag">Wood-Fired</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $30–60</span>
-              <a class="menu-link" href="https://emberwoodfire.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="under15 fifteen30 casual vegetarian southcounty">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=1000&q=85" alt="Middle Eastern wraps and dips">
-            <span class="card-number">12 / MEDITERRANEAN</span>
-            <span class="price">$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Jaffa Cafe</h3>
-            <div class="location">Arroyo Grande</div>
-            <p class="description">A longtime South County option for Mediterranean plates, wraps, kebabs, and vegetarian-friendly dishes.</p>
-            <div class="tags">
-              <span class="tag">Vegetarian Friendly</span>
-              <span class="tag">Casual Lunch</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $14–28</span>
-              <a class="menu-link" href="https://jaffacafe.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="under15 fifteen30 casual family northcounty">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85" alt="Burger and fries">
-            <span class="card-number">13 / BURGERS</span>
-            <span class="price">$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Sylvester's Burger</h3>
-            <div class="location">Atascadero</div>
-            <p class="description">A casual North County burger stop with large portions, classic sides, and a menu that works easily for families and groups.</p>
-            <div class="tags">
-              <span class="tag">Family Friendly</span>
-              <span class="tag">Burgers</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $14–28</span>
-              <a class="menu-link" href="https://sylvestersburgers.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="fifteen30 date family northcounty">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=85" alt="Restaurant table with shared dishes">
-            <span class="card-number">14 / AMERICAN</span>
-            <span class="price">$$</span>
-          </div>
-          <div class="card-body">
-            <h3>Guest House Grill</h3>
-            <div class="location">Atascadero</div>
-            <p class="description">A polished but comfortable downtown option for burgers, salads, steaks, cocktails, and group dinners.</p>
-            <div class="tags">
-              <span class="tag">Date Night</span>
-              <span class="tag">North County</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $20–45</span>
-              <a class="menu-link" href="https://guesthousegrill.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card" data-tags="under15 fifteen30 coffee casual northcounty">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=85" alt="Coffee drink on a cafe table">
-            <span class="card-number">15 / COFFEE</span>
-            <span class="price">$</span>
-          </div>
-          <div class="card-body">
-            <h3>Bru Coffeehouse</h3>
-            <div class="location">Atascadero</div>
-            <p class="description">A cozy coffeehouse for espresso drinks, breakfast, lunch, and an easy work or meet-up setting in North County.</p>
-            <div class="tags">
-              <span class="tag">Coffee & Pastries</span>
-              <span class="tag">Casual Meet-Up</span>
-            </div>
-            <div class="card-footer">
-              <span>Typical Spend: $7–20</span>
-              <a class="menu-link" href="https://brucoffeehouse.com/" target="_blank" rel="noopener">Menu & Site</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="empty-state" id="emptyState">
-        No restaurants match that filter yet. Try another option or return to All Restaurants.
-      </div>
+      <div class="restaurant-grid" id="restaurantGrid"></div>
+      <div class="empty-state" id="emptyState">No restaurants match that filter yet. Try another option or return to All Restaurants.</div>
     </section>
 
     <section class="tab-panel" id="nearby">
       <div class="nearby-hero">
         <div class="nearby-copy">
-          <div class="eyebrow" style="color: #e5b95d;">Campus Access Guide</div>
+          <div class="eyebrow" style="color:#e5b95d;">Campus Access Guide</div>
           <h2>Good Food, Within Reach.</h2>
-          <p>Use these practical distance labels to find restaurants that work with a walk, bike ride, or bus trip from Cal Poly or Cuesta College's San Luis Obispo campus.</p>
+          <p>Browse restaurants within approximately five miles of Cal Poly or Cuesta College's San Luis Obispo campus.</p>
         </div>
         <div class="nearby-image">
           <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=85" alt="College students walking together">
@@ -1130,65 +656,50 @@
           <div class="eyebrow">Plan Your Route</div>
           <h2>Near Cal Poly And Cuesta</h2>
         </div>
-        <p>Times are approximate and depend on your starting point, traffic, and transit schedules.</p>
+        <p>These listings are limited to restaurants within approximately five miles of the relevant campus.</p>
       </div>
 
       <div class="campus-filters">
         <button class="filter active" type="button" data-campus-filter="all">All Options</button>
         <button class="filter" type="button" data-campus-filter="calpoly">Near Cal Poly</button>
         <button class="filter" type="button" data-campus-filter="cuesta">Near Cuesta</button>
-        <button class="filter" type="button" data-campus-filter="walk">Walkable</button>
-        <button class="filter" type="button" data-campus-filter="bike">Bike-Friendly</button>
-        <button class="filter" type="button" data-campus-filter="bus">Bus-Friendly</button>
       </div>
 
       <div class="nearby-grid" id="nearbyGrid">
-        <article class="nearby-card" data-campus-tags="calpoly walk bike">
-          <span class="transit-label">Cal Poly: On Campus / Walkable</span>
+        <article class="nearby-card" data-campus-tags="calpoly">
+          <span class="transit-label">Near Cal Poly: Within 5 Miles</span>
           <h3>Scout Coffee At Cal Poly</h3>
           <p>A convenient coffee and pastry stop for class days, study breaks, and quick meet-ups without leaving campus.</p>
         </article>
 
-        <article class="nearby-card" data-campus-tags="calpoly walk bike">
-          <span class="transit-label">Cal Poly: Bike-Friendly</span>
+        <article class="nearby-card" data-campus-tags="calpoly">
+          <span class="transit-label">Near Cal Poly: Within 5 Miles</span>
           <h3>Scout Coffee On Foothill</h3>
           <p>A practical off-campus cafe option near the north side of SLO for coffee, pastries, and a quieter change of scene.</p>
         </article>
 
-        <article class="nearby-card" data-campus-tags="calpoly bike bus">
-          <span class="transit-label">Cal Poly: Bike Or Bus</span>
+        <article class="nearby-card" data-campus-tags="calpoly cuesta">
+          <span class="transit-label">Near Both Campuses: Within 5 Miles</span>
           <h3>Firestone Grill</h3>
-          <p>A central downtown option when a filling lunch or casual group dinner is the priority. Bike and bus access are typically more practical than walking.</p>
+          <p>A central downtown option when a filling lunch or casual group dinner is the priority.</p>
         </article>
 
-        <article class="nearby-card" data-campus-tags="calpoly bike bus">
-          <span class="transit-label">Cal Poly: Bike Or Bus</span>
+        <article class="nearby-card" data-campus-tags="calpoly cuesta">
+          <span class="transit-label">Near Both Campuses: Within 5 Miles</span>
           <h3>High Street Deli</h3>
           <p>A sandwich-focused stop near downtown with daily specials and a good option for taking food to go.</p>
         </article>
 
-        <article class="nearby-card" data-campus-tags="calpoly bike bus">
-          <span class="transit-label">Cal Poly: Bike Or Bus</span>
+        <article class="nearby-card" data-campus-tags="calpoly cuesta">
+          <span class="transit-label">Near Both Campuses: Within 5 Miles</span>
           <h3>Petra Mediterranean Pizza & Grill</h3>
           <p>A flexible downtown meal with wraps, pizza, falafel, and vegetarian choices for groups with different cravings.</p>
         </article>
 
-        <article class="nearby-card" data-campus-tags="cuesta bike bus">
-          <span class="transit-label">Cuesta: Bike Or Bus</span>
-          <h3>Downtown SLO Restaurants</h3>
-          <p>Firestone Grill, Novo, Thai Palace, Goshi, and Petra are all downtown options for students traveling from Cuesta's San Luis Obispo campus.</p>
-        </article>
-
-        <article class="nearby-card" data-campus-tags="cuesta bike bus">
-          <span class="transit-label">Cuesta: Bike Or Bus</span>
-          <h3>High Street Deli</h3>
-          <p>A useful downtown choice for a sit-down sandwich or takeout after class. Confirm current bus timing before you leave campus.</p>
-        </article>
-
-        <article class="nearby-card" data-campus-tags="cuesta bike bus">
-          <span class="transit-label">Cuesta: Bike Or Bus</span>
+        <article class="nearby-card" data-campus-tags="cuesta">
+          <span class="transit-label">Near Cuesta: Within 5 Miles</span>
           <h3>Scout Coffee Garden Street</h3>
-          <p>A central cafe option for coffee, baked goods, and study sessions once you are in the downtown area.</p>
+          <p>A central cafe option for coffee, baked goods, and study sessions within the five-mile Cuesta campus radius.</p>
         </article>
       </div>
     </section>
@@ -1196,12 +707,12 @@
     <section class="tab-panel" id="college">
       <div class="college-hero">
         <div class="college-copy">
-          <div class="eyebrow" style="color: #e5b95d;">Cal Poly And Cuesta Picks</div>
+          <div class="eyebrow" style="color:#e5b95d;">Cal Poly And Cuesta Picks</div>
           <h2>Good Food On A Student Budget.</h2>
-          <p>These are the practical options for between classes, casual group meals, and a meal that goes further. Deals and specials can change, so use the linked menu or restaurant website before you go.</p>
+          <p>These are practical options for between classes, casual group meals, and a meal that goes further. Deals can change, so use the linked website before you go.</p>
         </div>
         <div class="college-image">
-          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=85" alt="College-aged friends sharing food at a restaurant">
+          <img src="https://www.calpoly.edu/sites/default/files/2025-12/news_library-reopening-25_inset-cafe.jpg" alt="Cal Poly students enjoying coffee at Julian's Cafe in Kennedy Library">
         </div>
       </div>
 
@@ -1210,7 +721,7 @@
           <div class="eyebrow">Everyday Value And Specials</div>
           <h2>Student-Friendly Places</h2>
         </div>
-        <p>Prices are typical individual spending ranges, before tax, tip, drinks, or add-ons.</p>
+        <p>Prices are typical individual spending ranges before tax, tip, drinks, or add-ons.</p>
       </div>
 
       <div class="deal-grid">
@@ -1227,9 +738,9 @@
         </article>
 
         <article class="deal-card">
-          <span class="deal-price">Daily Specials Listed</span>
+          <span class="deal-price">Verified Deal Details</span>
           <h3>High Street Deli</h3>
-          <p>High Street lists daily sandwich specials alongside its standard menu. It is a strong pick when you want a substantial sandwich near downtown.</p>
+          <p>The official Deals page lists a 4:20 Special, a Cal Poly, Cuesta, and High School Student Special, a Hump Day Special, Monday wine discounts, and a Munchie Combo. Its rewards program offers $4.20 off a first sandwich after enrollment. Confirm deal terms before ordering.</p>
         </article>
 
         <article class="deal-card">
@@ -1245,9 +756,9 @@
         </article>
 
         <article class="deal-card">
-          <span class="deal-price">Check Before Ordering</span>
-          <h3>Current Deals And Happy Hours</h3>
-          <p>Restaurant specials change frequently. Check the restaurant's official site, menu, or the SLOEats app before planning around a specific deal.</p>
+          <span class="deal-price">Current Menu Detail</span>
+          <h3>High Street Munchies</h3>
+          <p>High Street lists Strauss Organic soft serve for $4.20 and a Doobie Bar for $3 on its Munchies menu. This is separate from the restaurant's larger 4:20 and student-special promotions.</p>
         </article>
       </div>
     </section>
@@ -1276,16 +787,16 @@
           <div>
             <div class="eyebrow">Pismo And Avila</div>
             <h3>Coastal Day Trips</h3>
-            <p>Pair a beach walk with cinnamon rolls in Pismo, casual seafood in Morro Bay, or a relaxed lunch on the coast.</p>
+            <p>Pair a beach walk with Old West Cinnamon Rolls or Puffer's in Pismo, then plan a Morro Bay stop at Giovanni's, Bayside Cafe, or Stax.</p>
           </div>
         </article>
 
         <article class="guide-card">
-          <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=85" alt="College-aged friends talking together at a restaurant table">
+          <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=85" alt="College-aged friends talking at a restaurant table">
           <div>
             <div class="eyebrow">Group Plans</div>
             <h3>Easy For Everyone</h3>
-            <p>Choose broad menus, shareable plates, and relaxed seating when your group has different budgets and cravings.</p>
+            <p>Choose broad menus, shareable plates, and relaxed seating at Petra, Firestone Grill, Palo Mesa, or Bayside Cafe when your group has different budgets and cravings.</p>
           </div>
         </article>
       </div>
@@ -1303,7 +814,7 @@
       <div class="how-it-works">
         <article class="info-box">
           <h3>How Prices And Filters Work</h3>
-          <p>Typical spending ranges estimate one person’s meal before tax, tip, alcohol, and optional add-ons. Restaurant prices change, so use each restaurant's official menu link for the current price.</p>
+          <p>Typical spending ranges estimate one person's meal before tax, tip, alcohol, and optional add-ons. Restaurant prices change, so use each restaurant's official menu link for current pricing.</p>
           <ul class="standards-list">
             <li>Under $15: a lower-cost meal or snack is commonly available.</li>
             <li>$15–30: a typical casual lunch or dinner range.</li>
@@ -1313,10 +824,11 @@
 
         <article class="info-box">
           <h3>How We Choose Places</h3>
-          <p>The directory focuses on established restaurants in San Luis Obispo County that are useful to the local community, including San Luis Obispo, Morro Bay, Pismo Beach, Arroyo Grande, and Atascadero.</p>
+          <p>The directory focuses on established Central Coast restaurants. Entries are checked against restaurant websites and regional dining references before they are added.</p>
           <ul class="standards-list">
             <li>Every listing includes a restaurant website or menu link.</li>
-            <li>Campus travel labels are planning aids, not live route instructions.</li>
+            <li>Closed restaurants and unverified locations are excluded.</li>
+            <li>Campus labels are planning aids, not live route instructions.</li>
             <li>Check current hours, reservations, menus, and specials before visiting.</li>
           </ul>
         </article>
@@ -1332,24 +844,295 @@
   </footer>
 
   <script>
+    const restaurants = [
+      {
+        name: "Scout Coffee",
+        location: "San Luis Obispo",
+        type: "Coffee",
+        spend: "$6–18",
+        price: "$",
+        tags: "under15 coffee casual vegetarian slo",
+        desc: "Specialty coffee, scratch-made pastries, and a warm design-focused setting with locations downtown, on Foothill, and at Cal Poly.",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85",
+        link: "https://scoutcoffeeco.com/",
+        labels: ["Coffee & Pastries", "Study Spot"]
+      },
+      {
+        name: "Firestone Grill",
+        location: "San Luis Obispo",
+        type: "American",
+        spend: "$12–22",
+        price: "$",
+        tags: "under15 casual family slo american",
+        desc: "A downtown classic for tri-tip sandwiches, burgers, salads, fries, and quick counter-service meals with generous portions.",
+        image: "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/slocal/firestone2_C78446C2-5056-A36A-0B78D9B1463F69EA-c78446455056a36_c7844707-5056-a36a-0bf36f89e4be60d9.png",
+        link: "https://www.firestonegrill.com/menu/",
+        labels: ["Family Friendly", "Central Coast Classic"]
+      },
+      {
+        name: "Petra Mediterranean Pizza & Grill",
+        location: "San Luis Obispo",
+        type: "Mediterranean",
+        spend: "$13–25",
+        price: "$",
+        tags: "fifteen30 casual family vegetarian slo mediterranean",
+        desc: "A flexible stop for shawarma, falafel, kebabs, salads, wraps, and pizza. A strong choice for mixed-diet groups.",
+        image: "https://cdn.prod.website-files.com/62a02ba3a283f600119050df/62c5152409e0c995ca4d2dc4_3S1A3283_colorcorrected_.jpg",
+        link: "https://www.eatpetra.com/",
+        labels: ["Vegetarian Friendly", "Group Friendly"]
+      },
+      {
+        name: "Thai Palace",
+        location: "San Luis Obispo",
+        type: "Thai",
+        spend: "$15–28",
+        price: "$$",
+        tags: "fifteen30 date vegetarian slo asian",
+        desc: "A longtime local stop for curries, noodles, stir-fries, and adjustable spice levels in the center of downtown.",
+        image: "https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/275efa0e-2664-41d3-9261-42fa46ca7ded.jpg",
+        link: "https://thaipalaceslo.com/",
+        labels: ["Date Night", "Vegetarian Friendly"]
+      },
+      {
+        name: "Novo Restaurant & Lounge",
+        location: "San Luis Obispo",
+        type: "California",
+        spend: "$22–45",
+        price: "$$",
+        tags: "fifteen30 thirtyplus date family outdoor vegetarian slo american",
+        desc: "Seasonal California cooking in a distinctive creekside setting, with lunch, dinner, cocktails, and broad options for different tastes.",
+        image: "https://images.squarespace-cdn.com/content/v1/59ceed0d8a02c7512beed014/1770074823530-B07622BGJASTLYHNG9O9/lamb.png?format=1500w",
+        link: "https://novorestaurant.com/menus/",
+        labels: ["Creekside Patio", "Date Night"]
+      },
+      {
+        name: "Goshi Japanese Restaurant",
+        location: "San Luis Obispo",
+        type: "Japanese",
+        spend: "$25–50",
+        price: "$$",
+        tags: "fifteen30 thirtyplus date slo asian seafood",
+        desc: "A respected local sushi restaurant with nigiri, rolls, cooked Japanese dishes, and a more intimate dinner atmosphere.",
+        image: "https://resizer.otstatic.com/v2/photos/xlarge/1/68882770.webp",
+        link: "https://www.goshislo.com/",
+        labels: ["Sushi", "Reservations Helpful"]
+      },
+      {
+        name: "High Street Deli",
+        location: "San Luis Obispo",
+        type: "Deli",
+        spend: "$13–18",
+        price: "$",
+        tags: "under15 casual vegetarian slo american",
+        desc: "A favorite for large, creative sandwiches, vegetarian choices, daily specials, a 4:20 Special, and student-focused promotions.",
+        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1000&q=85",
+        link: "https://www.highstdeli.com/deals/",
+        labels: ["Deals Listed", "Quick & Casual"]
+      },
+      {
+        name: "Flour House",
+        location: "San Luis Obispo",
+        type: "Italian",
+        spend: "$20–40",
+        price: "$$",
+        tags: "fifteen30 date family slo italian",
+        desc: "House-made pasta, wood-fired pizza, and seasonal Italian cooking in a polished but approachable downtown dining room.",
+        image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=85",
+        link: "https://flourhouseslo.com/",
+        labels: ["Date Night", "Pizza & Pasta"]
+      },
+      {
+        name: "Giovanni's Fish Market",
+        location: "Morro Bay",
+        type: "Seafood",
+        spend: "$15–32",
+        price: "$$",
+        tags: "under15 fifteen30 casual family coast seafood",
+        desc: "A waterfront market and restaurant known for fish and chips, chowder, seafood tacos, poke bowls, and casual family meals.",
+        image: "https://images.unsplash.com/photo-1544982503-9f984c14501a?auto=format&fit=crop&w=1000&q=85",
+        link: "https://www.giosfish.com/restaurants",
+        labels: ["Waterfront", "Family Friendly"]
+      },
+      {
+        name: "Old West Cinnamon Rolls",
+        location: "Pismo Beach",
+        type: "Bakery",
+        spend: "$6–15",
+        price: "$",
+        tags: "under15 casual family coast coffee",
+        desc: "A Pismo Beach morning staple for oversized cinnamon rolls and sweet breakfast treats before a beach walk.",
+        image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=1000&q=85",
+        link: "https://oldwestcinnamonrolls.com/",
+        labels: ["Breakfast", "Beach Day"]
+      },
+      {
+        name: "Ember",
+        location: "Arroyo Grande",
+        type: "California",
+        spend: "$30–60",
+        price: "$$$",
+        tags: "fifteen30 thirtyplus date southcounty outdoor american",
+        desc: "A wood-fired restaurant focused on seasonal Central Coast ingredients, with a carefully composed dinner menu and warm atmosphere.",
+        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=85",
+        link: "https://emberwoodfire.com/",
+        labels: ["Date Night", "Wood-Fired"]
+      },
+      {
+        name: "Jaffa Cafe",
+        location: "Arroyo Grande",
+        type: "Mediterranean",
+        spend: "$14–28",
+        price: "$$",
+        tags: "under15 fifteen30 casual vegetarian southcounty mediterranean",
+        desc: "A longtime South County option for Mediterranean plates, wraps, kebabs, and vegetarian-friendly dishes.",
+        image: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=1000&q=85",
+        link: "https://jaffacafe.com/",
+        labels: ["Vegetarian Friendly", "Casual Lunch"]
+      },
+      {
+        name: "Sylvester's Burger",
+        location: "Atascadero",
+        type: "Burgers",
+        spend: "$14–28",
+        price: "$$",
+        tags: "under15 fifteen30 casual family northcounty american",
+        desc: "A casual North County burger stop with large portions, classic sides, and a menu that works easily for families and groups.",
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85",
+        link: "https://sylvestersburgers.com/",
+        labels: ["Family Friendly", "Burgers"]
+      },
+      {
+        name: "Guest House Grill",
+        location: "Atascadero",
+        type: "American",
+        spend: "$20–45",
+        price: "$$",
+        tags: "fifteen30 date family northcounty american",
+        desc: "A polished but comfortable downtown option for burgers, salads, steaks, cocktails, and group dinners.",
+        image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=85",
+        link: "https://guesthousegrill.com/",
+        labels: ["Date Night", "North County"]
+      },
+      {
+        name: "Bru Coffeehouse",
+        location: "Atascadero",
+        type: "Coffee",
+        spend: "$7–20",
+        price: "$",
+        tags: "under15 fifteen30 coffee casual northcounty",
+        desc: "A cozy coffeehouse for espresso drinks, breakfast, lunch, and an easy work or meet-up setting in North County.",
+        image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=85",
+        link: "https://brucoffeehouse.com/",
+        labels: ["Coffee & Pastries", "Casual Meet-Up"]
+      },
+      {
+        name: "Palo Mesa Wood-Fired Pizza",
+        location: "Arroyo Grande Village",
+        type: "Pizza",
+        spend: "$18–32",
+        price: "$$",
+        tags: "fifteen30 casual family vegetarian southcounty italian",
+        desc: "The Arroyo Grande Village location is the wood-fired branch, with a focused pizza menu and a cozy, small-scale setting.",
+        image: "https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1000&q=85",
+        link: "https://www.palomesapizza.com/",
+        labels: ["Wood-Fired Pizza", "South County"]
+      },
+      {
+        name: "Puffer's Of Pismo",
+        location: "Pismo Beach",
+        type: "Wine Bar",
+        spend: "$20–45",
+        price: "$$",
+        tags: "fifteen30 date coast american",
+        desc: "A small Pismo wine bar known for changing small plates, nightly specials, wine, and a lively local atmosphere.",
+        image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=85",
+        link: "https://www.puffersofpismo.com/",
+        labels: ["Small Plates", "Date Night"]
+      },
+      {
+        name: "Bayside Cafe",
+        location: "Morro Bay",
+        type: "Cafe",
+        spend: "$16–32",
+        price: "$$",
+        tags: "fifteen30 casual family outdoor coast vegetarian seafood american",
+        desc: "A longtime Morro Bay lunch spot near the marina, with fish and chips, burgers, salads, desserts, and a waterfront-adjacent setting.",
+        image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=1000&q=85",
+        link: "https://baysidecafe.com/",
+        labels: ["Marina Area", "Family Friendly"]
+      },
+      {
+        name: "Stax Wine Bar & Bistro",
+        location: "Morro Bay",
+        type: "Wine Bar",
+        spend: "$25–55",
+        price: "$$",
+        tags: "fifteen30 thirtyplus date coast seafood american",
+        desc: "A more intimate Morro Bay stop for wine, oysters, panini, charcuterie, small plates, and a quieter evening out.",
+        image: "https://images.unsplash.com/photo-1473973916745-6082a7715f37?auto=format&fit=crop&w=1000&q=85",
+        link: "https://staxwinebar.com/",
+        labels: ["Wine & Small Plates", "Date Night"]
+      },
+      {
+        name: "Halfway Station 41",
+        location: "Atascadero",
+        type: "American",
+        spend: "$16–34",
+        price: "$$",
+        tags: "fifteen30 casual family vegetarian northcounty american",
+        desc: "A relaxed Highway 41 restaurant with burgers, fries, vegetarian options, local drinks, and occasional live music.",
+        image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1000&q=85",
+        link: "https://www.halfwaystation41.com/",
+        labels: ["Vegetarian Options", "North County"]
+      }
+    ];
+
+    const restaurantGrid = document.getElementById("restaurantGrid");
+    const emptyState = document.getElementById("emptyState");
+
+    function renderRestaurants(filter = "all") {
+      const visibleRestaurants = restaurants.filter((restaurant) => {
+        return filter === "all" || restaurant.tags.includes(filter);
+      });
+
+      restaurantGrid.innerHTML = visibleRestaurants.map((restaurant, index) => `
+        <article class="card">
+          <div class="card-image">
+            <img src="${restaurant.image}" alt="${restaurant.name}">
+            <span class="card-number">${String(index + 1).padStart(2, "0")} / ${restaurant.type.toUpperCase()}</span>
+            <span class="price">${restaurant.price}</span>
+          </div>
+          <div class="card-body">
+            <h3>${restaurant.name}</h3>
+            <div class="location">${restaurant.location}</div>
+            <p class="description">${restaurant.desc}</p>
+            <div class="tags">
+              ${restaurant.labels.map((label) => `<span class="tag">${label}</span>`).join("")}
+            </div>
+            <div class="card-footer">
+              <span>Typical Spend: ${restaurant.spend}</span>
+              <a class="menu-link" href="${restaurant.link}" target="_blank" rel="noopener">Menu & Site</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      emptyState.classList.toggle("show", visibleRestaurants.length === 0);
+    }
+
+    renderRestaurants();
+
     const tabs = document.querySelectorAll(".section-tab");
     const panels = document.querySelectorAll(".tab-panel");
     const tabLinks = document.querySelectorAll("[data-tab-link]");
 
     function openTab(tabName) {
-      tabs.forEach((tab) => {
-        tab.classList.toggle("active", tab.dataset.tab === tabName);
-      });
-
-      panels.forEach((panel) => {
-        panel.classList.toggle("active", panel.id === tabName);
-      });
+      tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.tab === tabName));
+      panels.forEach((panel) => panel.classList.toggle("active", panel.id === tabName));
     }
 
     tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        openTab(tab.dataset.tab);
-      });
+      tab.addEventListener("click", () => openTab(tab.dataset.tab));
     });
 
     tabLinks.forEach((link) => {
@@ -1360,30 +1143,11 @@
       });
     });
 
-    const filters = document.querySelectorAll("#explore .filter");
-    const restaurantCards = document.querySelectorAll("#restaurantGrid .card");
-    const emptyState = document.getElementById("emptyState");
-
-    filters.forEach((filter) => {
+    document.querySelectorAll("#explore .filter").forEach((filter) => {
       filter.addEventListener("click", () => {
-        const selectedFilter = filter.dataset.filter;
-
-        filters.forEach((item) => item.classList.remove("active"));
+        document.querySelectorAll("#explore .filter").forEach((item) => item.classList.remove("active"));
         filter.classList.add("active");
-
-        let visibleCards = 0;
-
-        restaurantCards.forEach((card) => {
-          const matches = selectedFilter === "all" || card.dataset.tags.includes(selectedFilter);
-
-          card.classList.toggle("hidden", !matches);
-
-          if (matches) {
-            visibleCards += 1;
-          }
-        });
-
-        emptyState.classList.toggle("show", visibleCards === 0);
+        renderRestaurants(filter.dataset.filter);
       });
     });
 
