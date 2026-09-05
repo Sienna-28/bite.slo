@@ -452,10 +452,90 @@
       };
     });
 
-    const campus = {
-      calpoly: ['Scout Coffee', 'Firestone Grill', 'High Street Deli', 'Petra Mediterranean Pizza & Grill', 'Thai Palace', 'Taqueria Santa Cruz Express', 'SLODOCO', 'Linnaea’s Cafe'],
-      cuesta: ['Firestone Grill', 'High Street Deli', 'Petra Mediterranean Pizza & Grill', 'Thai Palace', 'Novo Restaurant & Lounge', 'Flour House', 'Scout Coffee', 'SLODOCO']
-    };
+   const campus = {
+  calpoly: [
+    'Scout Coffee',
+    'Firestone Grill',
+    'High Street Deli',
+    'Petra Mediterranean Pizza & Grill',
+    'Thai Palace',
+    'Taqueria Santa Cruz Express',
+    'SLODOCO',
+    'Linnaea’s Cafe'
+  ],
+  cuesta: [
+    'Firestone Grill',
+    'High Street Deli',
+    'Petra Mediterranean Pizza & Grill',
+    'Thai Palace',
+    'Novo Restaurant & Lounge',
+    'Flour House',
+    'Scout Coffee',
+    'SLODOCO'
+  ]
+};
+
+function findPlace(name) {
+  const restaurant = places.find(place => place[0] === name);
+
+  if (restaurant) {
+    return restaurant;
+  }
+
+  const sweetPlace = dessert.find(place => place[0] === name);
+
+  if (sweetPlace) {
+    return [
+      sweetPlace[0],
+      sweetPlace[1],
+      sweetPlace[2],
+      'dessert',
+      sweetPlace[3],
+      sweetPlace[4]
+    ];
+  }
+
+  const extraPlace = extras[name];
+
+  if (extraPlace) {
+    return [
+      name,
+      extraPlace[0],
+      extraPlace[1],
+      'casual slo',
+      extraPlace[2],
+      extraPlace[3]
+    ];
+  }
+
+  return [
+    name,
+    'San Luis Obispo',
+    'Price varies',
+    'casual slo',
+    'Check the restaurant website for current menu details.',
+    '#'
+  ];
+}
+
+function drawCampus(key) {
+  document.getElementById('campusGrid').innerHTML = campus[key]
+    .map((name, i) => card(findPlace(name), i + 3))
+    .join('');
+}
+
+drawCampus('calpoly');
+
+document.querySelectorAll('[data-campus]').forEach(button => {
+  button.onclick = () => {
+    document.querySelectorAll('[data-campus]').forEach(item => {
+      item.classList.remove('active');
+    });
+
+    button.classList.add('active');
+    drawCampus(button.dataset.campus);
+  };
+});
 
     function findPlace(name) {
       const existing = places.find(place => place[0] === name);
