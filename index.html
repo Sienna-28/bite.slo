@@ -18,8 +18,8 @@
     .brand{font:700 30px "Newsreader",serif;text-decoration:none;letter-spacing:-1.5px}
     .brand span{color:var(--sun)}
     .nav-links{display:flex;gap:22px;flex-wrap:wrap}
-    .nav-links a{text-decoration:none;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-    .nav-links a:hover{color:var(--forest)}
+    .nav-link{border:0;background:transparent;color:var(--ink);padding:0;font:700 12px "DM Sans",sans-serif;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}
+    .nav-link:hover,.nav-link.active{color:var(--forest)}
     .hero{background:var(--sage);padding:76px 28px 64px;border-bottom:1px solid var(--line)}
     .hero-inner{max-width:1240px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
     .eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#5a6c5e}
@@ -96,12 +96,12 @@
     <nav class="nav">
       <a class="brand" href="#top">bite<span>.</span>slo</a>
       <div class="nav-links">
-        <a href="#explore">Explore</a>
-        <a href="#nearby">Near Campuses</a>
-        <a href="#college">College Picks</a>
-        <a href="#guides">Area Guides</a>
-        <a href="#desserts">Desserts</a>
-        <a href="#about">How It Works</a>
+        <button class="nav-link active" data-panel="explore">Explore</button>
+        <button class="nav-link" data-panel="nearby">Near Campuses</button>
+        <button class="nav-link" data-panel="college">College Picks</button>
+        <button class="nav-link" data-panel="guides">Area Guides</button>
+        <button class="nav-link" data-panel="desserts">Desserts</button>
+        <button class="nav-link" data-panel="about">How It Works</button>
       </div>
     </nav>
   </header>
@@ -311,51 +311,50 @@
       'photo-1486297678162-eb2a19b0a32d',
       'photo-1509042239860-f550ce710b93',
       'photo-1498654896293-37aacf113fd9',
-      'photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&sat=-35',
       'photo-1466637574441-749b8f19452f',
-      'photo-1504674900247-0877df9cc836',
-      'photo-1528605248644-14dd04022da1'
+      'photo-1504674900247-0877df9cc836'
     ];
 
-    const image = (i) => `https://images.unsplash.com/${imgs[i % imgs.length]}?auto=format&fit=crop&w=900&q=84`;
+    const image = index =>
+      `https://images.unsplash.com/${imgs[index % imgs.length]}?auto=format&fit=crop&w=900&q=84`;
 
     const places = [
-      ['Scout Coffee', 'San Luis Obispo', '$6 to $18', 'coffee under15 casual vegetarian slo', 'Specialty coffee and scratch-made pastries with downtown, Foothill, and Cal Poly locations.', 'https://scoutcoffeeco.com/'],
-      ['Firestone Grill', 'San Luis Obispo', '$12 to $22', 'american under15 casual family slo', 'Tri-tip sandwiches, burgers, salads, and generous counter-service plates.', 'https://www.firestonegrill.com/menu/'],
-      ['Petra Mediterranean Pizza & Grill', 'San Luis Obispo', '$13 to $25', 'mediterranean fifteen30 casual vegetarian family slo', 'Shawarma, falafel, kebabs, salads, wraps, and pizza for mixed-diet groups.', 'https://www.eatpetra.com/'],
-      ['Thai Palace', 'San Luis Obispo', '$15 to $28', 'asian fifteen30 date vegetarian slo', 'Downtown curries, noodles, stir-fries, and adjustable spice levels.', 'https://thaipalaceslo.com/'],
-      ['Novo Restaurant & Lounge', 'San Luis Obispo', '$22 to $45', 'american fifteen30 thirtyplus date outdoor vegetarian slo', 'Seasonal California cooking and cocktails in a creekside setting.', 'https://novorestaurant.com/menus/'],
-      ['Goshi Japanese Restaurant', 'San Luis Obispo', '$25 to $50', 'asian fifteen30 thirtyplus date slo', 'Sushi, nigiri, rolls, and cooked Japanese dishes for a more intimate dinner.', 'https://www.goshislo.com/'],
-      ['High Street Deli', 'San Luis Obispo', '$13 to $18', 'american under15 casual vegetarian slo', 'Creative sandwiches, vegetarian choices, and daily specials in a relaxed setting.', 'https://www.highstdeli.com/high-st-menus/'],
-      ['Flour House', 'San Luis Obispo', '$20 to $40', 'italian fifteen30 date family slo', 'House-made pasta, wood-fired pizza, and seasonal Italian cooking.', 'https://flourhouseslo.com/'],
-      ['Taqueria Santa Cruz Express', 'San Luis Obispo', '$10 to $18', 'mexican under15 casual slo', 'Fast, casual tacos, burritos, and Mexican plates near downtown.', 'https://www.taqueriasantacruz.com/'],
-      ['Giovanni’s Fish Market', 'Morro Bay', '$15 to $32', 'seafood fifteen30 casual family coast', 'Waterfront fish and chips, chowder, tacos, poke bowls, and seafood plates.', 'https://www.giosfish.com/restaurants'],
-      ['Bayside Cafe', 'Morro Bay', '$16 to $32', 'american fifteen30 casual family outdoor coast', 'A marina-area lunch stop with seafood, burgers, salads, and desserts.', 'https://baysidecafe.com/'],
-      ['Stax Wine Bar & Bistro', 'Morro Bay', '$25 to $55', 'seafood thirtyplus date coast', 'Wine, oysters, panini, charcuterie, and small plates.', 'https://staxwinebar.com/'],
-      ['Ember', 'Arroyo Grande', '$30 to $60', 'american thirtyplus date southcounty', 'Wood-fired, seasonal Central Coast cooking for a planned dinner.', 'https://emberwoodfire.com/'],
-      ['Jaffa Cafe', 'Arroyo Grande', '$14 to $28', 'mediterranean fifteen30 casual vegetarian southcounty', 'Mediterranean plates, wraps, kebabs, and vegetarian-friendly choices.', 'https://jaffacafe.com/'],
-      ['Palo Mesa Wood-Fired Pizza', 'Arroyo Grande', '$18 to $32', 'italian fifteen30 casual family vegetarian southcounty', 'Wood-fired pizza in Arroyo Grande Village.', 'https://www.palomesapizza.com/'],
-      ['Sylvester’s Burger', 'Atascadero', '$14 to $28', 'american fifteen30 casual family northcounty', 'Large burgers, classic sides, and easy group meals.', 'https://sylvestersburgers.com/'],
-      ['Guest House Grill', 'Atascadero', '$20 to $45', 'american fifteen30 date family northcounty', 'Burgers, salads, steaks, cocktails, and group dinner options.', 'https://guesthousegrill.com/'],
-      ['Bru Coffeehouse', 'Atascadero', '$7 to $20', 'coffee under15 casual northcounty', 'Espresso drinks, breakfast, lunch, and a comfortable meet-up setting.', 'https://brucoffeehouse.com/'],
-      ['Puffer’s of Pismo', 'Pismo Beach', '$20 to $45', 'american fifteen30 date coast', 'Wine, changing small plates, nightly specials, and a lively local atmosphere.', 'https://www.puffersofpismo.com/'],
-      ['Finney’s Crafthouse', 'Pismo Beach', '$16 to $34', 'american fifteen30 casual family coast', 'Burgers, pizza, bowls, and a broad menu for beach-day groups.', 'https://www.finneyscrafthouse.com/']
+      ['Scout Coffee','San Luis Obispo','$6 to $18','coffee under15 casual vegetarian slo','Specialty coffee and scratch-made pastries with downtown, Foothill, and Cal Poly locations.','https://scoutcoffeeco.com/'],
+      ['Firestone Grill','San Luis Obispo','$12 to $22','american under15 casual family slo','Tri-tip sandwiches, burgers, salads, and generous counter-service plates.','https://www.firestonegrill.com/menu/'],
+      ['Petra Mediterranean Pizza & Grill','San Luis Obispo','$13 to $25','mediterranean fifteen30 casual vegetarian family slo','Shawarma, falafel, kebabs, salads, wraps, and pizza for mixed-diet groups.','https://www.eatpetra.com/'],
+      ['Thai Palace','San Luis Obispo','$15 to $28','asian fifteen30 date vegetarian slo','Downtown curries, noodles, stir-fries, and adjustable spice levels.','https://thaipalaceslo.com/'],
+      ['Novo Restaurant & Lounge','San Luis Obispo','$22 to $45','american fifteen30 thirtyplus date outdoor vegetarian slo','Seasonal California cooking and cocktails in a creekside setting.','https://novorestaurant.com/menus/'],
+      ['Goshi Japanese Restaurant','San Luis Obispo','$25 to $50','asian fifteen30 thirtyplus date slo','Sushi, nigiri, rolls, and cooked Japanese dishes for a more intimate dinner.','https://www.goshislo.com/'],
+      ['High Street Deli','San Luis Obispo','$13 to $18','american under15 casual vegetarian slo','Creative sandwiches, vegetarian choices, and daily specials in a relaxed setting.','https://www.highstdeli.com/high-st-menus/'],
+      ['Flour House','San Luis Obispo','$20 to $40','italian fifteen30 date family slo','House-made pasta, wood-fired pizza, and seasonal Italian cooking.','https://flourhouseslo.com/'],
+      ['Taqueria Santa Cruz Express','San Luis Obispo','$10 to $18','mexican under15 casual slo','Fast, casual tacos, burritos, and Mexican plates near downtown.','https://www.taqueriasantacruz.com/'],
+      ['Giovanni’s Fish Market','Morro Bay','$15 to $32','seafood fifteen30 casual family coast','Waterfront fish and chips, chowder, tacos, poke bowls, and seafood plates.','https://www.giosfish.com/restaurants'],
+      ['Bayside Cafe','Morro Bay','$16 to $32','american fifteen30 casual family outdoor coast','A marina-area lunch stop with seafood, burgers, salads, and desserts.','https://baysidecafe.com/'],
+      ['Stax Wine Bar & Bistro','Morro Bay','$25 to $55','seafood thirtyplus date coast','Wine, oysters, panini, charcuterie, and small plates.','https://staxwinebar.com/'],
+      ['Ember','Arroyo Grande','$30 to $60','american thirtyplus date southcounty','Wood-fired, seasonal Central Coast cooking for a planned dinner.','https://emberwoodfire.com/'],
+      ['Jaffa Cafe','Arroyo Grande','$14 to $28','mediterranean fifteen30 casual vegetarian southcounty','Mediterranean plates, wraps, kebabs, and vegetarian-friendly choices.','https://jaffacafe.com/'],
+      ['Palo Mesa Wood-Fired Pizza','Arroyo Grande','$18 to $32','italian fifteen30 casual family vegetarian southcounty','Wood-fired pizza in Arroyo Grande Village.','https://www.palomesapizza.com/'],
+      ['Sylvester’s Burger','Atascadero','$14 to $28','american fifteen30 casual family northcounty','Large burgers, classic sides, and easy group meals.','https://sylvestersburgers.com/'],
+      ['Guest House Grill','Atascadero','$20 to $45','american fifteen30 date family northcounty','Burgers, salads, steaks, cocktails, and group dinner options.','https://guesthousegrill.com/'],
+      ['Bru Coffeehouse','Atascadero','$7 to $20','coffee under15 casual northcounty','Espresso drinks, breakfast, lunch, and a comfortable meet-up setting.','https://brucoffeehouse.com/'],
+      ['Puffer’s of Pismo','Pismo Beach','$20 to $45','american fifteen30 date coast','Wine, changing small plates, nightly specials, and a lively local atmosphere.','https://www.puffersofpismo.com/'],
+      ['Finney’s Crafthouse','Pismo Beach','$16 to $34','american fifteen30 casual family coast','Burgers, pizza, bowls, and a broad menu for beach-day groups.','https://www.finneyscrafthouse.com/']
     ];
 
     const dessert = [
-      ['Insomnia Cookies', 'San Luis Obispo', '$4 to $16', 'Cookies and ice cream sandwiches.', 'https://insomniacookies.com/'],
-      ['SLODOCO', 'San Luis Obispo', '$3 to $12', 'Creative donuts and coffee.', 'https://slodoco.com/'],
-      ['SLOYO Frozen Yogurt', 'San Luis Obispo', '$5 to $12', 'Build-your-own frozen yogurt and toppings.', 'https://www.sloyo.com/'],
-      ['Doc Burnstein’s Ice Cream Lab', 'San Luis Obispo', '$5 to $15', 'Ice cream, sundaes, shakes, and classic flavors.', 'https://docburnsteins.com/'],
-      ['Yolo Cannolo', 'San Luis Obispo', '$5 to $15', 'Cannoli and Italian-style sweet treats.', 'https://www.yolocannolo.com/'],
-      ['Old West Cinnamon Rolls', 'Pismo Beach', '$6 to $15', 'Oversized cinnamon rolls near the beach.', 'https://oldwestcinnamonrolls.com/'],
-      ['Surfside Donuts', 'Pismo Beach', '$3 to $12', 'Classic donuts for an early beach morning.', 'https://www.surfsidedonuts.com/'],
-      ['Pismo Yogurt', 'Pismo Beach', '$5 to $12', 'Frozen yogurt with toppings near the pier.', 'https://www.pismoyogurt.com/'],
-      ['Reimer’s Candies', 'Avila Beach', '$4 to $18', 'Fudge, caramel apples, chocolates, and candy.', 'https://reimerscandies.com/'],
-      ['Beach N Yogurt', 'Avila Beach', '$5 to $13', 'Frozen yogurt and cool treats by the beach.', 'https://www.beachnyogurt.com/'],
-      ['Big Al’s at the Beach', 'Avila Beach', '$5 to $16', 'Ice cream and sweet beach-day treats.', 'https://www.bigalatthebeach.com/'],
-      ['Rori’s Artisanal Creamery', 'Arroyo Grande', '$5 to $16', 'Small-batch ice cream and seasonal flavors.', 'https://rorisartisanalcreamery.com/'],
-      ['Carlock’s Bakery', 'Los Osos', '$4 to $16', 'Pastries, cakes, cookies, and bakery favorites.', 'https://www.carlocksbakery.com/']
+      ['Insomnia Cookies','San Luis Obispo','$4 to $16','Cookies and ice cream sandwiches.','https://insomniacookies.com/'],
+      ['SLODOCO','San Luis Obispo','$3 to $12','Creative donuts and coffee.','https://slodoco.com/'],
+      ['SLOYO Frozen Yogurt','San Luis Obispo','$5 to $12','Build-your-own frozen yogurt and toppings.','https://www.sloyo.com/'],
+      ['Doc Burnstein’s Ice Cream Lab','San Luis Obispo','$5 to $15','Ice cream, sundaes, shakes, and classic flavors.','https://docburnsteins.com/'],
+      ['Yolo Cannolo','San Luis Obispo','$5 to $15','Cannoli and Italian-style sweet treats.','https://www.yolocannolo.com/'],
+      ['Old West Cinnamon Rolls','Pismo Beach','$6 to $15','Oversized cinnamon rolls near the beach.','https://oldwestcinnamonrolls.com/'],
+      ['Surfside Donuts','Pismo Beach','$3 to $12','Classic donuts for an early beach morning.','https://www.surfsidedonuts.com/'],
+      ['Pismo Yogurt','Pismo Beach','$5 to $12','Frozen yogurt with toppings near the pier.','https://www.pismoyogurt.com/'],
+      ['Reimer’s Candies','Avila Beach','$4 to $18','Fudge, caramel apples, chocolates, and candy.','https://reimerscandies.com/'],
+      ['Beach N Yogurt','Avila Beach','$5 to $13','Frozen yogurt and cool treats by the beach.','https://www.beachnyogurt.com/'],
+      ['Big Al’s at the Beach','Avila Beach','$5 to $16','Ice cream and sweet beach-day treats.','https://www.bigalatthebeach.com/'],
+      ['Rori’s Artisanal Creamery','Arroyo Grande','$5 to $16','Small-batch ice cream and seasonal flavors.','https://rorisartisanalcreamery.com/'],
+      ['Carlock’s Bakery','Los Osos','$4 to $16','Pastries, cakes, cookies, and bakery favorites.','https://www.carlocksbakery.com/']
     ];
 
     const guides = {
@@ -363,67 +362,67 @@
         title: 'Pismo Beach',
         copy: 'Beach walks, pier views, casual seafood, breakfast, and a good reason to stay for dessert.',
         photo: 'https://images.unsplash.com/photo-1498307833015-e7b400441eb8?auto=format&fit=crop&w=1100&q=84',
-        names: ['Finney’s Crafthouse', 'Puffer’s of Pismo', 'Old West Cinnamon Rolls', 'Splash Cafe', 'The Oyster Loft', 'Cracked Crab', 'Wooly’s', 'Penny’s All American Cafe', 'SeaVenture', 'Giuseppe’s Cucina Rustica', 'Hoagies Sandwiches', 'Beachin’ Biscuits']
+        names: ['Finney’s Crafthouse','Puffer’s of Pismo','Old West Cinnamon Rolls','Splash Cafe','The Oyster Loft','Cracked Crab','Wooly’s','Penny’s All American Cafe','SeaVenture','Giuseppe’s Cucina Rustica','Hoagies Sandwiches','Beachin’ Biscuits']
       },
       avila: {
         title: 'Avila Beach',
         copy: 'Relaxed coastal dining around Avila Beach and Port San Luis, from breakfast to sunset seafood.',
         photo: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1100&q=84',
-        names: ['Custom House', 'Ocean Grill', 'Fat Cats Cafe', 'Mersea’s', 'Olde Port Inn', 'Avila Valley Barn', 'Reimer’s Candies', 'Big Al’s at the Beach', 'Beach N Yogurt', 'Kravabowl', 'The Gardens of Avila Restaurant']
+        names: ['Custom House','Ocean Grill','Fat Cats Cafe','Mersea’s','Olde Port Inn','Avila Valley Barn','Reimer’s Candies','Big Al’s at the Beach','Beach N Yogurt','Kravabowl','The Gardens of Avila Restaurant']
       },
       groups: {
         title: 'Good For Groups',
         copy: 'Broad menus, shareable choices, and relaxed tables when everyone wants something different.',
         photo: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1100&q=84',
-        names: ['Petra Mediterranean Pizza & Grill', 'Firestone Grill', 'Finney’s Crafthouse', 'Palo Mesa Wood-Fired Pizza', 'Bayside Cafe', 'Sylvester’s Burger', 'Novo Restaurant & Lounge', 'High Street Deli', 'Taqueria Santa Cruz Express', 'Thai Palace', 'Giovanni’s Fish Market']
+        names: ['Petra Mediterranean Pizza & Grill','Firestone Grill','Finney’s Crafthouse','Palo Mesa Wood-Fired Pizza','Bayside Cafe','Sylvester’s Burger','Novo Restaurant & Lounge','High Street Deli','Taqueria Santa Cruz Express','Thai Palace','Giovanni’s Fish Market']
       },
       walkable: {
         title: 'Downtown SLO',
         copy: 'Easy choices around the Mission, shops, nightlife, and downtown streets.',
         photo: 'https://www.lotsafunmaps.com/view_xs_webp.php?id=40274',
-        names: ['Novo Restaurant & Lounge', 'Goshi Japanese Restaurant', 'Firestone Grill', 'High Street Deli', 'Thai Palace', 'Petra Mediterranean Pizza & Grill', 'Flour House', 'Scout Coffee', 'SLODOCO', 'Linnaea’s Cafe', 'Beda’s Biergarten', 'Buona Tavola']
+        names: ['Novo Restaurant & Lounge','Goshi Japanese Restaurant','Firestone Grill','High Street Deli','Thai Palace','Petra Mediterranean Pizza & Grill','Flour House','Scout Coffee','SLODOCO','Linnaea’s Cafe','Beda’s Biergarten','Buona Tavola']
       }
     };
 
     const extras = {
-      "Splash Cafe": ['Pismo Beach', '$14 to $30', 'Casual seafood, chowder, and beach-town comfort food.', 'https://www.splashcafe.com/'],
-      "The Oyster Loft": ['Pismo Beach', '$30 to $65', 'Seafood and cocktails with ocean views.', 'https://www.theoysterloft.com/'],
-      "Cracked Crab": ['Pismo Beach', '$25 to $55', 'Seafood boils, crab, and casual coastal dining.', 'https://www.crackedcrab.com/'],
-      "Wooly’s": ['Pismo Beach', '$18 to $38', 'Beachfront burgers, seafood, and drinks.', 'https://www.woolyspismobeach.com/'],
-      "Penny’s All American Cafe": ['Pismo Beach', '$12 to $25', 'Breakfast and classic American comfort food.', 'https://pennysallamericancafe.com/'],
-      "SeaVenture": ['Pismo Beach', '$25 to $55', 'Oceanfront California cuisine.', 'https://www.seaventure.com/dining/'],
-      "Giuseppe’s Cucina Rustica": ['Pismo Beach', '$20 to $45', 'Italian classics, pizza, and pasta.', 'https://giuseppespismo.com/'],
-      "Hoagies Sandwiches": ['Pismo Beach', '$12 to $22', 'Big sandwiches and quick beach-day lunches.', 'https://hoagiessandwiches.com/'],
-      "Beachin’ Biscuits": ['Pismo Beach', '$10 to $22', 'Breakfast biscuits and casual morning plates.', 'https://beachinbiscuits.com/'],
-      "Custom House": ['Avila Beach', '$20 to $45', 'Seafood, steaks, and ocean views.', 'https://customhouseavila.com/'],
-      "Ocean Grill": ['Avila Beach', '$20 to $45', 'Seafood and California grill fare near the beach.', 'https://www.oceangrillavila.com/'],
-      "Fat Cats Cafe": ['Avila Beach', '$12 to $25', 'Breakfast, burgers, and relaxed cafe classics.', 'https://www.fatcatscafe.com/'],
-      "Mersea’s": ['Port San Luis', '$15 to $32', 'Casual seafood, breakfast, and harbor views.', 'https://merseas.com/'],
-      "Olde Port Inn": ['Port San Luis', '$18 to $38', 'Harbor dining with seafood and comfort food.', 'https://oldeportinn.com/'],
-      "Avila Valley Barn": ['Avila Valley', '$8 to $24', 'Farm-market food, pies, and seasonal family stops.', 'https://avilavalleybarn.com/'],
-      "Kravabowl": ['Avila Beach', '$11 to $20', 'Acai bowls, smoothies, and light beach-day fare.', 'https://kravabowl.com/'],
-      "The Gardens of Avila Restaurant": ['Avila Beach', '$25 to $55', 'Resort dining with seasonal California fare.', 'https://www.sycamoresprings.com/dining/'],
-      "Linnaea’s Cafe": ['San Luis Obispo', '$7 to $18', 'Coffee, baked goods, and a relaxed downtown cafe.', 'https://linnaeascafe.com/'],
-      "Beda’s Biergarten": ['San Luis Obispo', '$15 to $32', 'Beer garden food, sausages, and shareable plates.', 'https://bedasbiergarten.com/'],
-      "Buona Tavola": ['San Luis Obispo', '$20 to $45', 'Italian cooking, pasta, and a downtown dinner setting.', 'https://buonatavolagroup.com/']
+      "Splash Cafe": ['Pismo Beach','$14 to $30','Casual seafood, chowder, and beach-town comfort food.','https://www.splashcafe.com/'],
+      "The Oyster Loft": ['Pismo Beach','$30 to $65','Seafood and cocktails with ocean views.','https://www.theoysterloft.com/'],
+      "Cracked Crab": ['Pismo Beach','$25 to $55','Seafood boils, crab, and casual coastal dining.','https://www.crackedcrab.com/'],
+      "Wooly’s": ['Pismo Beach','$18 to $38','Beachfront burgers, seafood, and drinks.','https://www.woolyspismobeach.com/'],
+      "Penny’s All American Cafe": ['Pismo Beach','$12 to $25','Breakfast and classic American comfort food.','https://pennysallamericancafe.com/'],
+      "SeaVenture": ['Pismo Beach','$25 to $55','Oceanfront California cuisine.','https://www.seaventure.com/dining/'],
+      "Giuseppe’s Cucina Rustica": ['Pismo Beach','$20 to $45','Italian classics, pizza, and pasta.','https://giuseppespismo.com/'],
+      "Hoagies Sandwiches": ['Pismo Beach','$12 to $22','Big sandwiches and quick beach-day lunches.','https://hoagiessandwiches.com/'],
+      "Beachin’ Biscuits": ['Pismo Beach','$10 to $22','Breakfast biscuits and casual morning plates.','https://beachinbiscuits.com/'],
+      "Custom House": ['Avila Beach','$20 to $45','Seafood, steaks, and ocean views.','https://customhouseavila.com/'],
+      "Ocean Grill": ['Avila Beach','$20 to $45','Seafood and California grill fare near the beach.','https://www.oceangrillavila.com/'],
+      "Fat Cats Cafe": ['Avila Beach','$12 to $25','Breakfast, burgers, and relaxed cafe classics.','https://www.fatcatscafe.com/'],
+      "Mersea’s": ['Port San Luis','$15 to $32','Casual seafood, breakfast, and harbor views.','https://merseas.com/'],
+      "Olde Port Inn": ['Port San Luis','$18 to $38','Harbor dining with seafood and comfort food.','https://oldeportinn.com/'],
+      "Avila Valley Barn": ['Avila Valley','$8 to $24','Farm-market food, pies, and seasonal family stops.','https://avilavalleybarn.com/'],
+      "Kravabowl": ['Avila Beach','$11 to $20','Acai bowls, smoothies, and light beach-day fare.','https://kravabowl.com/'],
+      "The Gardens of Avila Restaurant": ['Avila Beach','$25 to $55','Resort dining with seasonal California fare.','https://www.sycamoresprings.com/dining/'],
+      "Linnaea’s Cafe": ['San Luis Obispo','$7 to $18','Coffee, baked goods, and a relaxed downtown cafe.','https://linnaeascafe.com/'],
+      "Beda’s Biergarten": ['San Luis Obispo','$15 to $32','Beer garden food, sausages, and shareable plates.','https://bedasbiergarten.com/'],
+      "Buona Tavola": ['San Luis Obispo','$20 to $45','Italian cooking, pasta, and a downtown dinner setting.','https://buonatavolagroup.com/']
     };
 
-    const card = (p, i, extra = '') => `
-      <article class="card ${extra}">
-        <img src="${image(i)}" alt="${p[0]} food and dining">
+    const card = (place, index, extraClass = '') => `
+      <article class="card ${extraClass}">
+        <img src="${image(index)}" alt="${place[0]} food and dining">
         <div class="card-body">
           <div class="kicker">
-            <span>${p[1]}</span>
-            <span>${p[2]}</span>
+            <span>${place[1]}</span>
+            <span>${place[2]}</span>
           </div>
-          <h3>${p[0]}</h3>
-          <p>${p[4] || p[3]}</p>
+          <h3>${place[0]}</h3>
+          <p>${place[4] || place[3]}</p>
           <div class="chips">
-            <span class="chip">${(p[3] || 'Dessert').split(' ')[0]}</span>
+            <span class="chip">${(place[3] || 'Dessert').split(' ')[0]}</span>
           </div>
           <div class="bottom">
-            <span>${p[2]}</span>
-            <a class="menu" href="${p[5] || p[4]}" target="_blank" rel="noopener">Menu & Site</a>
+            <span>${place[2]}</span>
+            <a class="menu" href="${place[5] || place[4]}" target="_blank" rel="noopener">Menu & Site</a>
           </div>
         </div>
       </article>
@@ -434,8 +433,8 @@
 
     function drawRestaurants() {
       restaurantGrid.innerHTML = places
-        .filter(p => activeFilter === 'all' || p[3].includes(activeFilter))
-        .map((p, i) => card(p, i))
+        .filter(place => activeFilter === 'all' || place[3].includes(activeFilter))
+        .map((place, index) => card(place, index))
         .join('');
 
       document.getElementById('emptyState').style.display = restaurantGrid.innerHTML ? 'none' : 'block';
@@ -444,126 +443,55 @@
     drawRestaurants();
 
     document.querySelectorAll('#explore .filter').forEach(button => {
-      button.onclick = () => {
+      button.addEventListener('click', () => {
         activeFilter = button.dataset.filter;
         document.querySelectorAll('#explore .filter').forEach(item => item.classList.remove('active'));
         button.classList.add('active');
         drawRestaurants();
-      };
+      });
     });
 
-   const campus = {
-  calpoly: [
-    'Scout Coffee',
-    'Firestone Grill',
-    'High Street Deli',
-    'Petra Mediterranean Pizza & Grill',
-    'Thai Palace',
-    'Taqueria Santa Cruz Express',
-    'SLODOCO',
-    'Linnaea’s Cafe'
-  ],
-  cuesta: [
-    'Firestone Grill',
-    'High Street Deli',
-    'Petra Mediterranean Pizza & Grill',
-    'Thai Palace',
-    'Novo Restaurant & Lounge',
-    'Flour House',
-    'Scout Coffee',
-    'SLODOCO'
-  ]
-};
-
-function findPlace(name) {
-  const restaurant = places.find(place => place[0] === name);
-
-  if (restaurant) {
-    return restaurant;
-  }
-
-  const sweetPlace = dessert.find(place => place[0] === name);
-
-  if (sweetPlace) {
-    return [
-      sweetPlace[0],
-      sweetPlace[1],
-      sweetPlace[2],
-      'dessert',
-      sweetPlace[3],
-      sweetPlace[4]
-    ];
-  }
-
-  const extraPlace = extras[name];
-
-  if (extraPlace) {
-    return [
-      name,
-      extraPlace[0],
-      extraPlace[1],
-      'casual slo',
-      extraPlace[2],
-      extraPlace[3]
-    ];
-  }
-
-  return [
-    name,
-    'San Luis Obispo',
-    'Price varies',
-    'casual slo',
-    'Check the restaurant website for current menu details.',
-    '#'
-  ];
-}
-
-function drawCampus(key) {
-  document.getElementById('campusGrid').innerHTML = campus[key]
-    .map((name, i) => card(findPlace(name), i + 3))
-    .join('');
-}
-
-drawCampus('calpoly');
-
-document.querySelectorAll('[data-campus]').forEach(button => {
-  button.onclick = () => {
-    document.querySelectorAll('[data-campus]').forEach(item => {
-      item.classList.remove('active');
-    });
-
-    button.classList.add('active');
-    drawCampus(button.dataset.campus);
-  };
-});
+    const campus = {
+      calpoly: ['Scout Coffee','Firestone Grill','High Street Deli','Petra Mediterranean Pizza & Grill','Thai Palace','Taqueria Santa Cruz Express','SLODOCO','Linnaea’s Cafe'],
+      cuesta: ['Firestone Grill','High Street Deli','Petra Mediterranean Pizza & Grill','Thai Palace','Novo Restaurant & Lounge','Flour House','Scout Coffee','SLODOCO']
+    };
 
     function findPlace(name) {
-      const existing = places.find(place => place[0] === name);
-      if (existing) return existing;
+      const restaurant = places.find(place => place[0] === name);
+      if (restaurant) return restaurant;
 
-      const extra = extras[name];
-      return [name, ...extra.slice(0, 2), 'casual slo', extra[2], extra[3]];
+      const sweetPlace = dessert.find(place => place[0] === name);
+      if (sweetPlace) {
+        return [sweetPlace[0], sweetPlace[1], sweetPlace[2], 'dessert', sweetPlace[3], sweetPlace[4]];
+      }
+
+      const extraPlace = extras[name];
+      if (extraPlace) {
+        return [name, extraPlace[0], extraPlace[1], 'casual slo', extraPlace[2], extraPlace[3]];
+      }
+
+      return [name, 'San Luis Obispo', 'Price varies', 'casual slo', 'Check the restaurant website for current menu details.', '#'];
     }
 
     function drawCampus(key) {
       document.getElementById('campusGrid').innerHTML = campus[key]
-        .map((name, i) => card(findPlace(name), i + 3))
+        .map((name, index) => card(findPlace(name), index + 3))
         .join('');
     }
 
     drawCampus('calpoly');
 
     document.querySelectorAll('[data-campus]').forEach(button => {
-      button.onclick = () => {
+      button.addEventListener('click', () => {
         document.querySelectorAll('[data-campus]').forEach(item => item.classList.remove('active'));
         button.classList.add('active');
         drawCampus(button.dataset.campus);
-      };
+      });
     });
 
-    const college = ['Scout Coffee', 'Firestone Grill', 'High Street Deli', 'Petra Mediterranean Pizza & Grill', 'Thai Palace', 'Taqueria Santa Cruz Express', 'SLODOCO', 'Linnaea’s Cafe'];
+    const college = ['Scout Coffee','Firestone Grill','High Street Deli','Petra Mediterranean Pizza & Grill','Thai Palace','Taqueria Santa Cruz Express','SLODOCO','Linnaea’s Cafe'];
 
-    document.getElementById('collegeGrid').innerHTML = college.map((name, i) => {
+    document.getElementById('collegeGrid').innerHTML = college.map((name, index) => {
       let place = findPlace(name);
 
       if (name === 'High Street Deli') {
@@ -577,7 +505,7 @@ document.querySelectorAll('[data-campus]').forEach(button => {
         ];
       }
 
-      return card(place, i + 9, 'deal');
+      return card(place, index + 9, 'deal');
     }).join('');
 
     function drawGuide(key) {
@@ -593,61 +521,45 @@ document.querySelectorAll('[data-campus]').forEach(button => {
       `;
 
       document.getElementById('guideGrid').innerHTML = guide.names
-        .map((name, i) => card(findPlace(name), i + 16))
+        .map((name, index) => card(findPlace(name), index + 16))
         .join('');
     }
 
     drawGuide('pismo');
 
     document.querySelectorAll('[data-guide]').forEach(button => {
-      button.onclick = () => {
+      button.addEventListener('click', () => {
         document.querySelectorAll('[data-guide]').forEach(item => item.classList.remove('active'));
         button.classList.add('active');
         drawGuide(button.dataset.guide);
-      };
+      });
     });
 
-    document.getElementById('dessertGrid').innerHTML = dessert.map((item, i) => {
-      return card([item[0], item[1], item[2], 'dessert', item[3], item[4]], i + 33);
+    document.getElementById('dessertGrid').innerHTML = dessert.map((item, index) => {
+      return card([item[0], item[1], item[2], 'dessert', item[3], item[4]], index + 33);
     }).join('');
 
     function openPanel(panelName) {
-      document.querySelectorAll('.tab, .panel').forEach(item => {
-        item.classList.remove('active');
-      });
+      document.querySelectorAll('.tab, .nav-link, .panel').forEach(item => item.classList.remove('active'));
 
-      const selectedTab = document.querySelector(`.tab[data-panel="${panelName}"]`);
-      const selectedPanel = document.getElementById(panelName);
+      const tab = document.querySelector(`.tab[data-panel="${panelName}"]`);
+      const navLink = document.querySelector(`.nav-link[data-panel="${panelName}"]`);
+      const panel = document.getElementById(panelName);
 
-      if (selectedTab) selectedTab.classList.add('active');
-      if (selectedPanel) selectedPanel.classList.add('active');
+      if (tab) tab.classList.add('active');
+      if (navLink) navLink.classList.add('active');
+      if (panel) panel.classList.add('active');
     }
 
-    document.querySelectorAll('.tab').forEach(button => {
-      button.onclick = () => {
+    document.querySelectorAll('[data-panel]').forEach(button => {
+      button.addEventListener('click', () => {
         openPanel(button.dataset.panel);
 
         window.scrollTo({
           top: document.querySelector('.tabs').offsetTop - 80,
           behavior: 'smooth'
         });
-      };
-    });
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.onclick = event => {
-        const panelName = link.getAttribute('href').replace('#', '');
-
-        if (document.getElementById(panelName)) {
-          event.preventDefault();
-          openPanel(panelName);
-
-          window.scrollTo({
-            top: document.querySelector('.tabs').offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      };
+      });
     });
   </script>
 </body>
