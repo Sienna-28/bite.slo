@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,38 +8,545 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+
   <style>
-    :root{--ink:#17352d;--forest:#214d3e;--sage:#dce7d5;--cream:#fbf9f2;--paper:#fffef9;--sun:#e5b95d;--line:#d5dfd0;--muted:#647169}
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif}
-    a{color:inherit}.site-header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-    .nav{max-width:1240px;margin:auto;min-height:72px;padding:0 28px;display:flex;justify-content:space-between;align-items:center;gap:24px}
-    .brand{font:700 30px "Newsreader",serif;text-decoration:none;letter-spacing:-1.5px}.brand span{color:var(--sun)}
-    .nav-links{display:flex;gap:22px;flex-wrap:wrap}.nav-link{border:0;background:transparent;color:var(--ink);padding:0;font:700 12px "DM Sans",sans-serif;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}.nav-link:hover,.nav-link.active{color:var(--forest)}
-    .hero{background:var(--sage);padding:76px 28px 64px;border-bottom:1px solid var(--line)}
-    .hero-inner{max-width:1240px;margin:auto;display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
-    .eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#5a6c5e}
-    h1,h2,h3,p{margin-top:0}.hero h1{font:600 clamp(48px,7vw,88px)/.94 "Newsreader",serif;letter-spacing:-.055em;margin:18px 0 25px;max-width:680px}
-    .hero-copy{font-size:17px;line-height:1.7;max-width:620px;color:#355248}.hero-photo{height:330px;border:8px solid var(--paper);box-shadow:12px 12px 0 var(--forest);overflow:hidden}.hero-photo img{width:100%;height:100%;object-fit:cover}
-    .tabs{max-width:1240px;margin:32px auto 0;padding:0 28px;display:flex;gap:9px;flex-wrap:wrap}.tab,.filter{border:1px solid var(--ink);background:var(--paper);color:var(--ink);padding:11px 15px;font:700 11px "DM Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}.tab.active,.filter.active,.tab:hover,.filter:hover{background:var(--forest);color:white;border-color:var(--forest)}
-    main{max-width:1240px;margin:auto;padding:34px 28px 70px}.panel{display:none}.panel.active{display:block}
-    .heading{display:flex;justify-content:space-between;gap:30px;align-items:end;margin:28px 0}.heading h2{font:600 44px/1 "Newsreader",serif;letter-spacing:-.04em;margin:8px 0 0}.heading p{max-width:420px;color:var(--muted);line-height:1.6;margin:0}
-    .filters-wrap{background:var(--paper);border:1px solid var(--line);padding:25px;margin-top:28px}.filter-row+.filter-row{border-top:1px solid var(--line);margin-top:18px;padding-top:18px}.filter-label{display:block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:11px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border-color:#a7b7a5;padding:9px 11px;font-size:10px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--paper);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}.card img{width:100%;height:150px;object-fit:cover}.card-body{padding:18px;display:flex;flex-direction:column;flex:1}.kicker{display:flex;justify-content:space-between;gap:12px;color:#59705e;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}.card h3{font:600 26px/1 "Newsreader",serif;letter-spacing:-.03em;margin-bottom:8px}.card p{color:var(--muted);font-size:13px;line-height:1.55;flex:1}.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 17px}.chip{font-size:10px;background:#edf2e9;padding:5px 7px;color:#405e4d}.bottom{border-top:1px solid var(--line);padding-top:12px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;gap:8px}.menu{color:var(--forest);text-decoration-thickness:1px}
-    .campus-banner,.college-banner{margin-top:28px;background:var(--forest);color:white;display:grid;grid-template-columns:1.15fr .85fr}.campus-banner div,.college-banner div{padding:36px}.campus-banner h2,.college-banner h2{font:600 40px/1 "Newsreader",serif;letter-spacing:-.04em;margin:9px 0 15px}.campus-banner p,.college-banner p{line-height:1.65;color:#dce7d5}.campus-banner img,.college-banner img{width:100%;height:100%;min-height:250px;object-fit:cover}
-    .deal{border-left:4px solid var(--sun)}.guide-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 24px}.guide-button{cursor:pointer;background:#edf2e9;border:1px solid #bfd0ba;padding:11px 14px;color:var(--ink);font:700 11px "DM Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase}.guide-button.active,.guide-button:hover{background:var(--ink);color:white;border-color:var(--ink)}
-    .guide-intro{display:grid;grid-template-columns:.8fr 1.2fr;background:var(--paper);border:1px solid var(--line);margin-bottom:24px}.guide-intro img{width:100%;height:240px;object-fit:cover}.guide-intro div{padding:30px}.guide-intro h3{font:600 36px/1 "Newsreader",serif;letter-spacing:-.04em;margin:9px 0 13px}.guide-intro p{line-height:1.6;color:var(--muted)}
-    .empty{display:none;padding:30px;background:var(--paper);border:1px solid var(--line);color:var(--muted)}.how{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.how article{padding:28px;background:var(--paper);border:1px solid var(--line)}.how h3{font:600 29px "Newsreader",serif;letter-spacing:-.03em}.how p,.how li{line-height:1.65;color:var(--muted)}.how ul{padding-left:20px}
-    .footer{background:var(--ink);color:#eaf1e6;padding:34px 28px}.footer-inner{max-width:1240px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer p{margin:0;color:#bfd0ba;font-size:13px}
-    @media(max-width:800px){.nav{padding:15px 20px}.nav-links{gap:12px}.hero{padding:52px 20px}.hero-inner,.campus-banner,.college-banner,.guide-intro{grid-template-columns:1fr}.hero-photo{height:250px}.tabs,main{padding-left:20px;padding-right:20px}.heading{display:block}.heading p{margin-top:15px}.grid,.how{grid-template-columns:1fr}.campus-banner img,.college-banner img{min-height:210px}.guide-intro img{height:190px}}
+    :root {
+      --ink:#17352d;
+      --forest:#214d3e;
+      --sage:#dce7d5;
+      --cream:#fbf9f2;
+      --paper:#fffef9;
+      --sun:#e5b95d;
+      --line:#d5dfd0;
+      --muted:#647169;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      background:var(--cream);
+      color:var(--ink);
+      font-family:"DM Sans",sans-serif;
+    }
+
+    a { color:inherit; }
+
+    .site-header {
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .nav {
+      max-width:1240px;
+      margin:auto;
+      min-height:72px;
+      padding:0 28px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+    }
+
+    .brand {
+      font:700 30px "Newsreader",serif;
+      text-decoration:none;
+      letter-spacing:-1.5px;
+    }
+
+    .brand span { color:var(--sun); }
+
+    .nav-links {
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    .nav-link {
+      border:0;
+      background:transparent;
+      color:var(--ink);
+      padding:0;
+      font:700 12px "DM Sans",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      cursor:pointer;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color:var(--forest);
+    }
+
+    .hero {
+      background:var(--sage);
+      padding:76px 28px 64px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero-inner {
+      max-width:1240px;
+      margin:auto;
+    }
+
+    .eyebrow {
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:#5a6c5e;
+    }
+
+    h1,h2,h3,p { margin-top:0; }
+
+    .hero h1 {
+      font:600 clamp(48px,7vw,88px)/.94 "Newsreader",serif;
+      letter-spacing:-.055em;
+      margin:18px 0 25px;
+      max-width:780px;
+    }
+
+    .hero-copy {
+      font-size:17px;
+      line-height:1.7;
+      max-width:680px;
+      color:#355248;
+    }
+
+    .tabs {
+      max-width:1240px;
+      margin:32px auto 0;
+      padding:0 28px;
+      display:flex;
+      gap:9px;
+      flex-wrap:wrap;
+    }
+
+    .tab,
+    .filter {
+      border:1px solid var(--ink);
+      background:var(--paper);
+      color:var(--ink);
+      padding:11px 15px;
+      font:700 11px "DM Sans",sans-serif;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    .tab.active,
+    .filter.active,
+    .tab:hover,
+    .filter:hover {
+      background:var(--forest);
+      color:white;
+      border-color:var(--forest);
+    }
+
+    main {
+      max-width:1240px;
+      margin:auto;
+      padding:34px 28px 70px;
+    }
+
+    .panel { display:none; }
+    .panel.active { display:block; }
+
+    .heading {
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      align-items:end;
+      margin:28px 0;
+    }
+
+    .heading h2 {
+      font:600 44px/1 "Newsreader",serif;
+      letter-spacing:-.04em;
+      margin:8px 0 0;
+    }
+
+    .heading p {
+      max-width:420px;
+      color:var(--muted);
+      line-height:1.6;
+      margin:0;
+    }
+
+    .filters-wrap {
+      background:var(--paper);
+      border:1px solid var(--line);
+      padding:25px;
+      margin-top:28px;
+    }
+
+    .filter-row + .filter-row {
+      border-top:1px solid var(--line);
+      margin-top:18px;
+      padding-top:18px;
+    }
+
+    .filter-label {
+      display:block;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      margin-bottom:11px;
+    }
+
+    .filters {
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .filter {
+      border-color:#a7b7a5;
+      padding:9px 11px;
+      font-size:10px;
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card {
+      background:var(--paper);
+      border:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .card-body {
+      padding:22px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+
+    .kicker {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      color:#59705e;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      margin-bottom:9px;
+    }
+
+    .card h3 {
+      font:600 26px/1 "Newsreader",serif;
+      letter-spacing:-.03em;
+      margin-bottom:8px;
+    }
+
+    .card p {
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+      flex:1;
+    }
+
+    .chips {
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin:8px 0 17px;
+    }
+
+    .chip {
+      font-size:10px;
+      background:#edf2e9;
+      padding:5px 7px;
+      color:#405e4d;
+    }
+
+    .bottom {
+      border-top:1px solid var(--line);
+      padding-top:12px;
+      font-size:12px;
+      font-weight:700;
+      display:flex;
+      justify-content:space-between;
+      gap:8px;
+    }
+
+    .menu {
+      color:var(--forest);
+      text-decoration-thickness:1px;
+    }
+
+    .campus-banner,
+    .college-banner {
+      margin-top:28px;
+      background:var(--forest);
+      color:white;
+    }
+
+    .campus-banner div,
+    .college-banner div {
+      padding:36px;
+    }
+
+    .campus-banner h2,
+    .college-banner h2 {
+      font:600 40px/1 "Newsreader",serif;
+      letter-spacing:-.04em;
+      margin:9px 0 15px;
+    }
+
+    .campus-banner p,
+    .college-banner p {
+      line-height:1.65;
+      color:#dce7d5;
+      max-width:700px;
+    }
+
+    .deal {
+      border-left:4px solid var(--sun);
+    }
+
+    .guide-tabs {
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:20px 0 24px;
+    }
+
+    .guide-button {
+      cursor:pointer;
+      background:#edf2e9;
+      border:1px solid #bfd0ba;
+      padding:11px 14px;
+      color:var(--ink);
+      font:700 11px "DM Sans",sans-serif;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .guide-button.active,
+    .guide-button:hover {
+      background:var(--ink);
+      color:white;
+      border-color:var(--ink);
+    }
+
+    .guide-intro {
+      background:var(--paper);
+      border:1px solid var(--line);
+      margin-bottom:24px;
+      padding:30px;
+    }
+
+    .guide-intro h3 {
+      font:600 36px/1 "Newsreader",serif;
+      letter-spacing:-.04em;
+      margin:9px 0 13px;
+    }
+
+    .guide-intro p {
+      line-height:1.6;
+      color:var(--muted);
+    }
+
+    .empty {
+      display:none;
+      padding:30px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      color:var(--muted);
+    }
+
+    .how {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .how article {
+      padding:28px;
+      background:var(--paper);
+      border:1px solid var(--line);
+    }
+
+    .how h3 {
+      font:600 29px "Newsreader",serif;
+      letter-spacing:-.03em;
+    }
+
+    .how p,
+    .how li {
+      line-height:1.65;
+      color:var(--muted);
+    }
+
+    .how ul { padding-left:20px; }
+
+    /* DECIDE FOR ME */
+    .decide-box {
+      max-width:760px;
+      margin:45px auto;
+      padding:48px;
+      text-align:center;
+      background:var(--paper);
+      border:1px solid var(--line);
+    }
+
+    .decide-box h2 {
+      font:600 52px/1 "Newsreader",serif;
+      letter-spacing:-.04em;
+      margin:12px 0 18px;
+    }
+
+    .decide-box > p {
+      color:var(--muted);
+      line-height:1.7;
+      max-width:550px;
+      margin:0 auto 28px;
+    }
+
+    .decide-button {
+      border:0;
+      background:var(--forest);
+      color:white;
+      padding:16px 25px;
+      font:700 12px "DM Sans",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      cursor:pointer;
+    }
+
+    .decide-button:hover {
+      background:var(--ink);
+    }
+
+    .random-result {
+      display:none;
+      margin-top:32px;
+      padding-top:30px;
+      border-top:1px solid var(--line);
+    }
+
+    .random-result.show {
+      display:block;
+    }
+
+    .random-result .chosen-label {
+      color:#59705e;
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .random-result h3 {
+      font:600 42px/1 "Newsreader",serif;
+      letter-spacing:-.04em;
+      margin-bottom:10px;
+    }
+
+    .random-result .chosen-details {
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+
+    .random-result .chosen-description {
+      max-width:520px;
+      margin:0 auto 20px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .random-result .menu {
+      display:inline-block;
+      margin-top:4px;
+      font-weight:700;
+    }
+
+    .footer {
+      background:var(--ink);
+      color:#eaf1e6;
+      padding:34px 28px;
+    }
+
+    .footer-inner {
+      max-width:1240px;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .footer p {
+      margin:0;
+      color:#bfd0ba;
+      font-size:13px;
+    }
+
+    @media(max-width:800px) {
+      .nav {
+        padding:15px 20px;
+      }
+
+      .nav-links {
+        gap:12px;
+      }
+
+      .hero {
+        padding:52px 20px;
+      }
+
+      .tabs,
+      main {
+        padding-left:20px;
+        padding-right:20px;
+      }
+
+      .heading {
+        display:block;
+      }
+
+      .heading p {
+        margin-top:15px;
+      }
+
+      .grid,
+      .how {
+        grid-template-columns:1fr;
+      }
+
+      .decide-box {
+        padding:35px 22px;
+      }
+
+      .decide-box h2 {
+        font-size:42px;
+      }
+    }
   </style>
 </head>
+
 <body>
+
   <header class="site-header">
     <nav class="nav">
       <a class="brand" href="#top">bite<span>.</span>slo</a>
+
       <div class="nav-links">
         <button class="nav-link active" data-panel="explore">Explore</button>
+        <button class="nav-link" data-panel="decide">Decide For Me</button>
         <button class="nav-link" data-panel="nearby">Near Campuses</button>
         <button class="nav-link" data-panel="college">College Picks</button>
         <button class="nav-link" data-panel="guides">Area Guides</button>
@@ -53,17 +561,20 @@
       <div>
         <div class="eyebrow">San Luis Obispo County</div>
         <h1>Eat Well.<br>Wherever The Day Takes You.</h1>
-        <p class="hero-copy">A Central Coast restaurant guide for quick lunches, date nights, beach days, and memorable dinners. Browse price ranges, cuisine, atmosphere, and menu links in one place.</p>
-      </div>
-      <div class="hero-photo">
-        <img src="https://www.lotsafunmaps.com/view_xs_webp.php?id=40272" alt="Downtown San Luis Obispo and the Mission">
+        <p class="hero-copy">
+          A Central Coast restaurant guide for quick lunches, date nights,
+          beach days, and memorable dinners. Browse price ranges, cuisine,
+          atmosphere, and menu links in one place.
+        </p>
       </div>
     </div>
   </section>
 
   <main>
+
     <nav class="tabs" aria-label="Sections">
       <button class="tab active" data-panel="explore">Explore Restaurants</button>
+      <button class="tab" data-panel="decide">Decide For Me</button>
       <button class="tab" data-panel="nearby">Near Campuses</button>
       <button class="tab" data-panel="college">College Picks</button>
       <button class="tab" data-panel="guides">Area Guides</button>
@@ -71,10 +582,15 @@
       <button class="tab" data-panel="about">How It Works</button>
     </nav>
 
+
+    <!-- EXPLORE -->
     <section class="panel active" id="explore">
+
       <div class="filters-wrap">
+
         <div class="filter-row">
           <span class="filter-label">Typical Spend Per Person</span>
+
           <div class="filters">
             <button class="filter active" data-filter="all">All Restaurants</button>
             <button class="filter" data-filter="under15">Under $15</button>
@@ -82,8 +598,10 @@
             <button class="filter" data-filter="thirtyplus">$30+</button>
           </div>
         </div>
+
         <div class="filter-row">
           <span class="filter-label">Cuisine</span>
+
           <div class="filters">
             <button class="filter" data-filter="american">American</button>
             <button class="filter" data-filter="asian">Asian</button>
@@ -94,8 +612,10 @@
             <button class="filter" data-filter="seafood">Seafood</button>
           </div>
         </div>
+
         <div class="filter-row">
           <span class="filter-label">Mood And Area</span>
+
           <div class="filters">
             <button class="filter" data-filter="casual">Quick & Casual</button>
             <button class="filter" data-filter="date">Date Night</button>
@@ -108,6 +628,7 @@
             <button class="filter" data-filter="southcounty">South County</button>
           </div>
         </div>
+
       </div>
 
       <div class="heading">
@@ -115,38 +636,117 @@
           <div class="eyebrow">Central Coast Directory</div>
           <h2>Restaurants Worth The Drive</h2>
         </div>
-        <p>Typical spending ranges are per person before tax, tip, drinks, and optional add-ons.</p>
+
+        <p>
+          Typical spending ranges are per person before tax, tip,
+          drinks, and optional add-ons.
+        </p>
       </div>
 
       <div class="grid" id="restaurantGrid"></div>
-      <div class="empty" id="emptyState">No restaurants match that filter. Choose another filter or return to All Restaurants.</div>
+
+      <div class="empty" id="emptyState">
+        No restaurants match that filter. Choose another filter
+        or return to All Restaurants.
+      </div>
+
     </section>
 
+
+    <!-- DECIDE FOR ME -->
+    <section class="panel" id="decide">
+
+      <div class="decide-box">
+
+        <div class="eyebrow">Can't Choose?</div>
+
+        <h2>We'll Decide For You.</h2>
+
+        <p>
+          No scrolling. No debating. Hit the button and Bite SLO
+          will randomly choose one restaurant for you.
+        </p>
+
+        <button class="decide-button" id="decideButton">
+          Pick My Restaurant
+        </button>
+
+        <div class="random-result" id="randomResult">
+
+          <div class="chosen-label">You're Eating At</div>
+
+          <h3 id="chosenName"></h3>
+
+          <div class="chosen-details" id="chosenDetails"></div>
+
+          <p class="chosen-description" id="chosenDescription"></p>
+
+          <a
+            class="menu"
+            id="chosenLink"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            View Menu & Site →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- NEAR CAMPUSES -->
     <section class="panel" id="nearby">
+
       <div class="campus-banner">
         <div>
           <div class="eyebrow" style="color:#e5b95d">Campus Access</div>
+
           <h2>Near Cal Poly And Cuesta</h2>
-          <p>Every listing below is within approximately five miles of the selected campus. Check current maps, hours, and transit before heading out.</p>
+
+          <p>
+            Every listing below is within approximately five miles of
+            the selected campus. Check current maps, hours, and transit
+            before heading out.
+          </p>
         </div>
-        <img src="https://www.calpoly.edu/sites/default/files/2025-12/news_library-reopening-25_inset-cafe.jpg" alt="Cal Poly students in a campus cafe">
       </div>
 
       <div class="guide-tabs">
-        <button class="guide-button active" data-campus="calpoly">Near Cal Poly</button>
-        <button class="guide-button" data-campus="cuesta">Near Cuesta</button>
+        <button class="guide-button active" data-campus="calpoly">
+          Near Cal Poly
+        </button>
+
+        <button class="guide-button" data-campus="cuesta">
+          Near Cuesta
+        </button>
       </div>
+
       <div class="grid" id="campusGrid"></div>
+
     </section>
 
+
+    <!-- COLLEGE PICKS -->
     <section class="panel" id="college">
+
       <div class="college-banner">
         <div>
-          <div class="eyebrow" style="color:#e5b95d">Cal Poly And Cuesta Picks</div>
+          <div class="eyebrow" style="color:#e5b95d">
+            Cal Poly And Cuesta Picks
+          </div>
+
           <h2>Good Food On A Student Budget.</h2>
-          <p>Student-friendly everyday spots, filling meals, and currently listed specials. Confirm all deal details with the restaurant before ordering.</p>
+
+          <p>
+            Student-friendly everyday spots, filling meals, and currently
+            listed specials. Confirm all deal details with the restaurant
+            before ordering.
+          </p>
         </div>
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85" alt="College friends sharing a meal">
       </div>
 
       <div class="heading">
@@ -154,73 +754,133 @@
           <div class="eyebrow">Value And Specials</div>
           <h2>College Picks</h2>
         </div>
-        <p>Deal details are included only when an official restaurant page lists the promotion.</p>
+
+        <p>
+          Deal details are included only when an official restaurant
+          page lists the promotion.
+        </p>
       </div>
+
       <div class="grid" id="collegeGrid"></div>
+
     </section>
 
+
+    <!-- AREA GUIDES -->
     <section class="panel" id="guides">
+
       <div class="heading">
         <div>
           <div class="eyebrow">Choose Your Setting</div>
           <h2>Area Guides</h2>
         </div>
-        <p>Pick an area or plan, then browse a focused list of Central Coast places.</p>
+
+        <p>
+          Pick an area or plan, then browse a focused list
+          of Central Coast places.
+        </p>
       </div>
 
       <div class="guide-tabs">
-        <button class="guide-button active" data-guide="pismo">Pismo Beach</button>
-        <button class="guide-button" data-guide="avila">Avila Beach</button>
-        <button class="guide-button" data-guide="groups">Groups</button>
-        <button class="guide-button" data-guide="walkable">Downtown SLO</button>
+        <button class="guide-button active" data-guide="pismo">
+          Pismo Beach
+        </button>
+
+        <button class="guide-button" data-guide="avila">
+          Avila Beach
+        </button>
+
+        <button class="guide-button" data-guide="groups">
+          Groups
+        </button>
+
+        <button class="guide-button" data-guide="walkable">
+          Downtown SLO
+        </button>
       </div>
 
       <div class="guide-intro" id="guideIntro"></div>
+
       <div class="grid" id="guideGrid"></div>
+
     </section>
 
+
+    <!-- DESSERTS -->
     <section class="panel" id="desserts">
+
       <div class="heading">
         <div>
           <div class="eyebrow">Sweet Stops</div>
           <h2>Dessert Places</h2>
         </div>
-        <p>This section is only for cookies, ice cream, frozen yogurt, donuts, pastries, and other sweet treats.</p>
+
+        <p>
+          This section is only for cookies, ice cream, frozen yogurt,
+          donuts, pastries, and other sweet treats.
+        </p>
       </div>
+
       <div class="grid" id="dessertGrid"></div>
+
     </section>
 
+
+    <!-- ABOUT -->
     <section class="panel" id="about">
+
       <div class="heading">
         <div>
           <div class="eyebrow">A Guide You Can Use</div>
           <h2>Useful Details, Not Guesswork.</h2>
         </div>
-        <p>Menus, prices, hours, and promotions change. Use the restaurant links before you visit.</p>
+
+        <p>
+          Menus, prices, hours, and promotions change.
+          Use the restaurant links before you visit.
+        </p>
       </div>
 
       <div class="how">
+
         <article>
           <h3>How Prices And Filters Work</h3>
-          <p>Price ranges estimate a typical individual meal. Filters describe the style, setting, cuisine, or general area of each restaurant and are intended to make choosing easier.</p>
+
+          <p>
+            Price ranges estimate a typical individual meal. Filters
+            describe the style, setting, cuisine, or general area of
+            each restaurant and are intended to make choosing easier.
+          </p>
+
           <ul>
             <li>Under $15: a lower-cost meal, snack, or sweet is commonly available.</li>
             <li>$15 to $30: a typical casual lunch or dinner range.</li>
             <li>$30+: a more elevated dinner, seafood, steak, or multi-course experience.</li>
           </ul>
         </article>
+
         <article>
           <h3>How Places Are Listed</h3>
-          <p>Bite SLO focuses on established restaurants and dessert shops in San Luis Obispo County. Each card links to a restaurant menu, ordering page, or official website whenever one is available.</p>
+
+          <p>
+            Bite SLO focuses on established restaurants and dessert shops
+            in San Luis Obispo County. Each card links to a restaurant
+            menu, ordering page, or official website whenever one is available.
+          </p>
+
           <ul>
             <li>Listings are organized by practical location, price, and dining style.</li>
             <li>Campus lists are limited to approximately five miles of the named campus.</li>
             <li>Check reservations, dietary needs, current menus, and special terms directly with the restaurant.</li>
           </ul>
         </article>
+
       </div>
+
     </section>
+
   </main>
+
 
   <footer class="footer">
     <div class="footer-inner">
@@ -229,73 +889,51 @@
     </div>
   </footer>
 
-  <script>
-    const genericImages = [
-      'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=85'
-    ];
 
-    const restaurantImages = {
-      'Scout Coffee': 'https://www.calpoly.edu/sites/default/files/2025-12/news_library-reopening-25_inset-cafe.jpg',
-      'Firestone Grill': 'https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/slocal/firestone2_C78446C2-5056-A36A-0B78D9B1463F69EA-c78446455056a36_c7844707-5056-a36a-0bf36f89e4be60d9.png',
-      'Petra Mediterranean Pizza & Grill': 'https://cdn.prod.website-files.com/62a02ba3a283f600119050df/62c5152409e0c995ca4d2dc4_3S1A3283_colorcorrected_.jpg',
-      'Thai Palace': 'https://img.cdn4dd.com/cdn-cgi/image/fit=cover,width=600,height=400,format=auto,quality=80/https://doordash-static.s3.amazonaws.com/media/store/header/275efa0e-2664-41d3-9261-42fa46ca7ded.jpg',
-      'Novo Restaurant & Lounge': 'https://images.squarespace-cdn.com/content/v1/59ceed0d8a02c7512beed014/1770074823530-B07622BGJASTLYHNG9O9/lamb.png?format=1500w',
-      'Goshi Japanese Restaurant': 'https://resizer.otstatic.com/v2/photos/xlarge/1/68882770.webp',
-      'High Street Deli': 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1200&q=85',
-      'Flour House': 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85',
-      'Taqueria Santa Cruz Express': 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1200&q=85',
-      'Giovanni’s Fish Market': 'https://images.unsplash.com/photo-1544982503-9f984c14501a?auto=format&fit=crop&w=1200&q=85',
-      'Bayside Cafe': 'https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=1200&q=85',
-      'Stax Wine Bar & Bistro': 'https://images.unsplash.com/photo-1473973916745-6082a7715f37?auto=format&fit=crop&w=1200&q=85',
-      'Ember': 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=85',
-      'Jaffa Cafe': 'https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=1200&q=85',
-      'Palo Mesa Wood-Fired Pizza': 'https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1200&q=85',
-      'Sylvester’s Burger': 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=85',
-      'Guest House Grill': 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85',
-      'Bru Coffeehouse': 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=85',
-      'Puffer’s of Pismo': 'https://images.unsplash.com/photo-1473116763249-2faaef81ccda?auto=format&fit=crop&w=1200&q=85',
-      'Finney’s Crafthouse': 'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85',
-      'Insomnia Cookies': 'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1200&q=85',
-      'SLODOCO': 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=85',
-      'SLOYO Frozen Yogurt': 'https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=1200&q=85',
-      'Doc Burnstein’s Ice Cream Lab': 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1200&q=85',
-      'Yolo Cannolo': 'https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=1200&q=85',
-      'Old West Cinnamon Rolls': 'https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=1200&q=85',
-      'Surfside Donuts': 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=85',
-      'Reimer’s Candies': 'https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=1200&q=85',
-      'Beach N Yogurt': 'https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=1200&q=85',
-      'Big Al’s at the Beach': 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=1200&q=85',
-      'Rori’s Artisanal Creamery': 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1200&q=85',
-      'Carlock’s Bakery': 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=85'
-    };
+  <script>
 
     const places = [
       ['Scout Coffee','San Luis Obispo','$6 to $18','coffee under15 casual vegetarian slo','Specialty coffee and scratch-made pastries with downtown, Foothill, and Cal Poly locations.','https://scoutcoffeeco.com/'],
+
       ['Firestone Grill','San Luis Obispo','$12 to $22','american under15 casual family slo','Tri-tip sandwiches, burgers, salads, and generous counter-service plates.','https://www.firestonegrill.com/menu/'],
+
       ['Petra Mediterranean Pizza & Grill','San Luis Obispo','$13 to $25','mediterranean fifteen30 casual vegetarian family slo','Shawarma, falafel, kebabs, salads, wraps, and pizza for mixed-diet groups.','https://www.eatpetra.com/'],
+
       ['Thai Palace','San Luis Obispo','$15 to $28','asian fifteen30 date vegetarian slo','Downtown curries, noodles, stir-fries, and adjustable spice levels.','https://thaipalaceslo.com/'],
+
       ['Novo Restaurant & Lounge','San Luis Obispo','$22 to $45','american fifteen30 thirtyplus date outdoor vegetarian slo','Seasonal California cooking and cocktails in a creekside setting.','https://novorestaurant.com/menus/'],
+
       ['Goshi Japanese Restaurant','San Luis Obispo','$25 to $50','asian fifteen30 thirtyplus date slo','Sushi, nigiri, rolls, and cooked Japanese dishes for a more intimate dinner.','https://www.goshislo.com/'],
+
       ['High Street Deli','San Luis Obispo','$13 to $18','american under15 casual vegetarian slo','Creative sandwiches, vegetarian choices, and daily specials in a relaxed setting.','https://www.highstdeli.com/high-st-menus/'],
+
       ['Flour House','San Luis Obispo','$20 to $40','italian fifteen30 date family slo','House-made pasta, wood-fired pizza, and seasonal Italian cooking.','https://flourhouseslo.com/'],
+
       ['Taqueria Santa Cruz Express','San Luis Obispo','$10 to $18','mexican under15 casual slo','Fast, casual tacos, burritos, and Mexican plates near downtown.','https://www.taqueriasantacruz.com/'],
+
       ['Giovanni’s Fish Market','Morro Bay','$15 to $32','seafood fifteen30 casual family coast','Waterfront fish and chips, chowder, tacos, poke bowls, and seafood plates.','https://www.giosfish.com/restaurants'],
+
       ['Bayside Cafe','Morro Bay','$16 to $32','american fifteen30 casual family outdoor coast','A marina-area lunch stop with seafood, burgers, salads, and desserts.','https://baysidecafe.com/'],
+
       ['Stax Wine Bar & Bistro','Morro Bay','$25 to $55','seafood thirtyplus date coast','Wine, oysters, panini, charcuterie, and small plates.','https://staxwinebar.com/'],
+
       ['Ember','Arroyo Grande','$30 to $60','american thirtyplus date southcounty','Wood-fired, seasonal Central Coast cooking for a planned dinner.','https://emberwoodfire.com/'],
+
       ['Jaffa Cafe','Arroyo Grande','$14 to $28','mediterranean fifteen30 casual vegetarian southcounty','Mediterranean plates, wraps, kebabs, and vegetarian-friendly choices.','https://jaffacafe.com/'],
+
       ['Palo Mesa Wood-Fired Pizza','Arroyo Grande','$18 to $32','italian fifteen30 casual family vegetarian southcounty','Wood-fired pizza in Arroyo Grande Village.','https://www.palomesapizza.com/'],
+
       ['Sylvester’s Burger','Atascadero','$14 to $28','american fifteen30 casual family northcounty','Large burgers, classic sides, and easy group meals.','https://sylvestersburgers.com/'],
+
       ['Guest House Grill','Atascadero','$20 to $45','american fifteen30 date family northcounty','Burgers, salads, steaks, cocktails, and group dinner options.','https://guesthousegrill.com/'],
+
       ['Bru Coffeehouse','Atascadero','$7 to $20','coffee under15 casual northcounty','Espresso drinks, breakfast, lunch, and a comfortable meet-up setting.','https://brucoffeehouse.com/'],
+
       ['Puffer’s of Pismo','Pismo Beach','$20 to $45','american fifteen30 date coast','Wine, changing small plates, nightly specials, and a lively local atmosphere.','https://www.puffersofpismo.com/'],
+
       ['Finney’s Crafthouse','Pismo Beach','$16 to $34','american fifteen30 casual family coast','Burgers, pizza, bowls, and a broad menu for beach-day groups.','https://www.finneyscrafthouse.com/']
     ];
+
 
     const desserts = [
       ['Insomnia Cookies','San Luis Obispo','$4 to $16','Cookies and ice cream sandwiches.','https://insomniacookies.com/'],
@@ -313,203 +951,513 @@
       ['Carlock’s Bakery','Los Osos','$4 to $16','Pastries, cakes, cookies, and bakery favorites.','https://www.carlocksbakery.com/']
     ];
 
+
     const extras = {
       'Splash Cafe':['Pismo Beach','$14 to $30','Casual seafood, chowder, and beach-town comfort food.','https://www.splashcafe.com/'],
+
       'The Oyster Loft':['Pismo Beach','$30 to $65','Seafood and cocktails with ocean views.','https://www.theoysterloft.com/'],
+
       'Cracked Crab':['Pismo Beach','$25 to $55','Seafood boils, crab, and casual coastal dining.','https://www.crackedcrab.com/'],
+
       'Wooly’s':['Pismo Beach','$18 to $38','Beachfront burgers, seafood, and drinks.','https://www.woolyspismobeach.com/'],
+
       'Penny’s All American Cafe':['Pismo Beach','$12 to $25','Breakfast and classic American comfort food.','https://pennysallamericancafe.com/'],
+
       'SeaVenture':['Pismo Beach','$25 to $55','Oceanfront California cuisine.','https://www.seaventure.com/dining/'],
+
       'Giuseppe’s Cucina Rustica':['Pismo Beach','$20 to $45','Italian classics, pizza, and pasta.','https://giuseppespismo.com/'],
+
       'Hoagies Sandwiches':['Pismo Beach','$12 to $22','Big sandwiches and quick beach-day lunches.','https://hoagiessandwiches.com/'],
+
       'Beachin’ Biscuits':['Pismo Beach','$10 to $22','Breakfast biscuits and casual morning plates.','https://beachinbiscuits.com/'],
+
       'Custom House':['Avila Beach','$20 to $45','Seafood, steaks, and ocean views.','https://customhouseavila.com/'],
+
       'Ocean Grill':['Avila Beach','$20 to $45','Seafood and California grill fare near the beach.','https://www.oceangrillavila.com/'],
+
       'Fat Cats Cafe':['Avila Beach','$12 to $25','Breakfast, burgers, and relaxed cafe classics.','https://www.fatcatscafe.com/'],
+
       'Mersea’s':['Port San Luis','$15 to $32','Casual seafood, breakfast, and harbor views.','https://merseas.com/'],
+
       'Olde Port Inn':['Port San Luis','$18 to $38','Harbor dining with seafood and comfort food.','https://oldeportinn.com/'],
+
       'Avila Valley Barn':['Avila Valley','$8 to $24','Farm-market food, pies, and seasonal family stops.','https://avilavalleybarn.com/'],
+
       'Kravabowl':['Avila Beach','$11 to $20','Acai bowls, smoothies, and light beach-day fare.','https://kravabowl.com/'],
+
       'The Gardens of Avila Restaurant':['Avila Beach','$25 to $55','Resort dining with seasonal California fare.','https://www.sycamoresprings.com/dining/'],
+
       'Linnaea’s Cafe':['San Luis Obispo','$7 to $18','Coffee, baked goods, and a relaxed downtown cafe.','https://linnaeascafe.com/'],
+
       'Beda’s Biergarten':['San Luis Obispo','$15 to $32','Beer garden food, sausages, and shareable plates.','https://bedasbiergarten.com/'],
+
       'Buona Tavola':['San Luis Obispo','$20 to $45','Italian cooking, pasta, and a downtown dinner setting.','https://buonatavolagroup.com/']
     };
 
+
     const guides = {
+
       pismo: {
-        title: 'Pismo Beach',
-        copy: 'Beach walks, pier views, casual seafood, breakfast, and a good reason to stay for dessert.',
-        photo: 'https://images.unsplash.com/photo-1498307833015-e7b400441eb8?auto=format&fit=crop&w=1100&q=84',
-        names: ['Finney’s Crafthouse','Puffer’s of Pismo','Old West Cinnamon Rolls','Splash Cafe','The Oyster Loft','Cracked Crab','Wooly’s','Penny’s All American Cafe','SeaVenture','Giuseppe’s Cucina Rustica','Hoagies Sandwiches','Beachin’ Biscuits']
+        title:'Pismo Beach',
+        copy:'Beach walks, pier views, casual seafood, breakfast, and a good reason to stay for dessert.',
+        names:[
+          'Finney’s Crafthouse',
+          'Puffer’s of Pismo',
+          'Old West Cinnamon Rolls',
+          'Splash Cafe',
+          'The Oyster Loft',
+          'Cracked Crab',
+          'Wooly’s',
+          'Penny’s All American Cafe',
+          'SeaVenture',
+          'Giuseppe’s Cucina Rustica',
+          'Hoagies Sandwiches',
+          'Beachin’ Biscuits'
+        ]
       },
+
       avila: {
-        title: 'Avila Beach',
-        copy: 'Relaxed coastal dining around Avila Beach and Port San Luis, from breakfast to sunset seafood.',
-        photo: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1100&q=84',
-        names: ['Custom House','Ocean Grill','Fat Cats Cafe','Mersea’s','Olde Port Inn','Avila Valley Barn','Reimer’s Candies','Big Al’s at the Beach','Beach N Yogurt','Kravabowl','The Gardens of Avila Restaurant']
+        title:'Avila Beach',
+        copy:'Relaxed coastal dining around Avila Beach and Port San Luis, from breakfast to sunset seafood.',
+        names:[
+          'Custom House',
+          'Ocean Grill',
+          'Fat Cats Cafe',
+          'Mersea’s',
+          'Olde Port Inn',
+          'Avila Valley Barn',
+          'Reimer’s Candies',
+          'Big Al’s at the Beach',
+          'Beach N Yogurt',
+          'Kravabowl',
+          'The Gardens of Avila Restaurant'
+        ]
       },
+
       groups: {
-        title: 'Good For Groups',
-        copy: 'Broad menus, shareable choices, and relaxed tables when everyone wants something different.',
-        photo: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1100&q=84',
-        names: ['Petra Mediterranean Pizza & Grill','Firestone Grill','Finney’s Crafthouse','Palo Mesa Wood-Fired Pizza','Bayside Cafe','Sylvester’s Burger','Novo Restaurant & Lounge','High Street Deli','Taqueria Santa Cruz Express','Thai Palace','Giovanni’s Fish Market']
+        title:'Good For Groups',
+        copy:'Broad menus, shareable choices, and relaxed tables when everyone wants something different.',
+        names:[
+          'Petra Mediterranean Pizza & Grill',
+          'Firestone Grill',
+          'Finney’s Crafthouse',
+          'Palo Mesa Wood-Fired Pizza',
+          'Bayside Cafe',
+          'Sylvester’s Burger',
+          'Novo Restaurant & Lounge',
+          'High Street Deli',
+          'Taqueria Santa Cruz Express',
+          'Thai Palace',
+          'Giovanni’s Fish Market'
+        ]
       },
+
       walkable: {
-        title: 'Downtown SLO',
-        copy: 'Easy choices around the Mission, shops, nightlife, and downtown streets.',
-        photo: 'https://www.lotsafunmaps.com/view_xs_webp.php?id=40274',
-        names: ['Novo Restaurant & Lounge','Goshi Japanese Restaurant','Firestone Grill','High Street Deli','Thai Palace','Petra Mediterranean Pizza & Grill','Flour House','Scout Coffee','SLODOCO','Linnaea’s Cafe','Beda’s Biergarten','Buona Tavola']
+        title:'Downtown SLO',
+        copy:'Easy choices around the Mission, shops, nightlife, and downtown streets.',
+        names:[
+          'Novo Restaurant & Lounge',
+          'Goshi Japanese Restaurant',
+          'Firestone Grill',
+          'High Street Deli',
+          'Thai Palace',
+          'Petra Mediterranean Pizza & Grill',
+          'Flour House',
+          'Scout Coffee',
+          'SLODOCO',
+          'Linnaea’s Cafe',
+          'Beda’s Biergarten',
+          'Buona Tavola'
+        ]
       }
     };
 
+
     const campus = {
-      calpoly: ['Scout Coffee','Firestone Grill','High Street Deli','Petra Mediterranean Pizza & Grill','Thai Palace','Taqueria Santa Cruz Express','SLODOCO','Linnaea’s Cafe'],
-      cuesta: ['Firestone Grill','High Street Deli','Petra Mediterranean Pizza & Grill','Thai Palace','Novo Restaurant & Lounge','Flour House','Scout Coffee','SLODOCO']
+      calpoly:[
+        'Scout Coffee',
+        'Firestone Grill',
+        'High Street Deli',
+        'Petra Mediterranean Pizza & Grill',
+        'Thai Palace',
+        'Taqueria Santa Cruz Express',
+        'SLODOCO',
+        'Linnaea’s Cafe'
+      ],
+
+      cuesta:[
+        'Firestone Grill',
+        'High Street Deli',
+        'Petra Mediterranean Pizza & Grill',
+        'Thai Palace',
+        'Novo Restaurant & Lounge',
+        'Flour House',
+        'Scout Coffee',
+        'SLODOCO'
+      ]
     };
 
+
     function getPlace(name) {
+
       const restaurant = places.find(place => place[0] === name);
-      if (restaurant) return restaurant;
+
+      if (restaurant) {
+        return restaurant;
+      }
 
       const sweet = desserts.find(place => place[0] === name);
-      if (sweet) return [sweet[0],sweet[1],sweet[2],'dessert',sweet[3],sweet[4]];
+
+      if (sweet) {
+        return [
+          sweet[0],
+          sweet[1],
+          sweet[2],
+          'dessert',
+          sweet[3],
+          sweet[4]
+        ];
+      }
 
       const extra = extras[name];
-      if (extra) return [name,extra[0],extra[1],'casual slo',extra[2],extra[3]];
 
-      return [name,'San Luis Obispo','Price varies','casual slo','Check the restaurant website for current menu details.','#'];
+      if (extra) {
+        return [
+          name,
+          extra[0],
+          extra[1],
+          'casual',
+          extra[2],
+          extra[3]
+        ];
+      }
+
+      return [
+        name,
+        'San Luis Obispo',
+        'Price varies',
+        'casual',
+        'Check the restaurant website for current menu details.',
+        '#'
+      ];
     }
 
+
     function createCard(place, index, extraClass = '') {
-      const fallback = genericImages[index % genericImages.length];
-      const photo = restaurantImages[place[0]] || fallback;
 
       return `
         <article class="card ${extraClass}">
-          <img src="${photo}" alt="${place[0]} signature food or dining">
+
           <div class="card-body">
-            <div class="kicker"><span>${place[1]}</span><span>${place[2]}</span></div>
+
+            <div class="kicker">
+              <span>${place[1]}</span>
+              <span>${place[2]}</span>
+            </div>
+
             <h3>${place[0]}</h3>
+
             <p>${place[4]}</p>
-            <div class="chips"><span class="chip">${place[3].split(' ')[0]}</span></div>
+
+            <div class="chips">
+              <span class="chip">${place[3].split(' ')[0]}</span>
+            </div>
+
             <div class="bottom">
               <span>${place[2]}</span>
-              <a class="menu" href="${place[5]}" target="_blank" rel="noopener">Menu & Site</a>
+
+              <a
+                class="menu"
+                href="${place[5]}"
+                target="_blank"
+                rel="noopener"
+              >
+                Menu & Site
+              </a>
             </div>
+
           </div>
+
         </article>
       `;
     }
 
+
     let activeFilter = 'all';
 
+
     function drawRestaurants() {
-      const matches = places.filter(place => activeFilter === 'all' || place[3].includes(activeFilter));
-      document.getElementById('restaurantGrid').innerHTML = matches.map(createCard).join('');
-      document.getElementById('emptyState').style.display = matches.length ? 'none' : 'block';
+
+      const matches = places.filter(
+        place =>
+          activeFilter === 'all' ||
+          place[3].includes(activeFilter)
+      );
+
+      document.getElementById('restaurantGrid').innerHTML =
+        matches.map(createCard).join('');
+
+      document.getElementById('emptyState').style.display =
+        matches.length ? 'none' : 'block';
     }
+
 
     function drawCampus(campusName) {
-      document.getElementById('campusGrid').innerHTML = campus[campusName]
-        .map((name, index) => createCard(getPlace(name), index + 4))
-        .join('');
+
+      document.getElementById('campusGrid').innerHTML =
+        campus[campusName]
+          .map(name => createCard(getPlace(name)))
+          .join('');
     }
+
 
     function drawCollege() {
-      document.getElementById('collegeGrid').innerHTML = campus.calpoly.map((name, index) => {
-        let place = getPlace(name);
 
-        if (name === 'High Street Deli') {
-          place = [
-            'High Street Deli',
-            'San Luis Obispo',
-            'Deals listed',
-            'casual slo',
-            'Official deal listings include a 4:20 Special, a Cal Poly, Cuesta, and High School Student Special, a Hump Day Special, Monday wine discounts, and a Munchie Combo. Check current terms before ordering.',
-            'https://www.highstdeli.com/deals/'
-          ];
-        }
+      document.getElementById('collegeGrid').innerHTML =
+        campus.calpoly.map(name => {
 
-        return createCard(place, index + 12, name === 'High Street Deli' ? 'deal' : '');
-      }).join('');
+          let place = getPlace(name);
+
+          if (name === 'High Street Deli') {
+
+            place = [
+              'High Street Deli',
+              'San Luis Obispo',
+              'Deals listed',
+              'casual slo',
+              'Official deal listings include a 4:20 Special, a Cal Poly, Cuesta, and High School Student Special, a Hump Day Special, Monday wine discounts, and a Munchie Combo. Check current terms before ordering.',
+              'https://www.highstdeli.com/deals/'
+            ];
+
+          }
+
+          return createCard(
+            place,
+            0,
+            name === 'High Street Deli' ? 'deal' : ''
+          );
+
+        }).join('');
     }
 
+
     function drawGuide(guideName) {
+
       const guide = guides[guideName];
 
       document.getElementById('guideIntro').innerHTML = `
-        <img src="${guide.photo}" alt="${guide.title}">
-        <div>
-          <div class="eyebrow">Central Coast Guide</div>
-          <h3>${guide.title}</h3>
-          <p>${guide.copy}</p>
-        </div>
+        <div class="eyebrow">Central Coast Guide</div>
+        <h3>${guide.title}</h3>
+        <p>${guide.copy}</p>
       `;
 
-      document.getElementById('guideGrid').innerHTML = guide.names
-        .map((name, index) => createCard(getPlace(name), index + 20))
-        .join('');
+      document.getElementById('guideGrid').innerHTML =
+        guide.names
+          .map(name => createCard(getPlace(name)))
+          .join('');
     }
+
 
     function drawDesserts() {
-      document.getElementById('dessertGrid').innerHTML = desserts
-        .map((place, index) => createCard([place[0],place[1],place[2],'dessert',place[3],place[4]], index + 30))
-        .join('');
+
+      document.getElementById('dessertGrid').innerHTML =
+        desserts
+          .map(place =>
+            createCard([
+              place[0],
+              place[1],
+              place[2],
+              'dessert',
+              place[3],
+              place[4]
+            ])
+          )
+          .join('');
     }
+
+
+    /* RANDOM RESTAURANT PICKER */
+
+    let lastRandomIndex = -1;
+
+    function decideForMe() {
+
+      let randomIndex;
+
+      /*
+        Avoid immediately choosing the exact same restaurant twice
+        when there is more than one option.
+      */
+      do {
+        randomIndex = Math.floor(Math.random() * places.length);
+      } while (
+        places.length > 1 &&
+        randomIndex === lastRandomIndex
+      );
+
+      lastRandomIndex = randomIndex;
+
+      const choice = places[randomIndex];
+
+      document.getElementById('chosenName').textContent =
+        choice[0];
+
+      document.getElementById('chosenDetails').textContent =
+        `${choice[1]} • ${choice[2]}`;
+
+      document.getElementById('chosenDescription').textContent =
+        choice[4];
+
+      document.getElementById('chosenLink').href =
+        choice[5];
+
+      document.getElementById('randomResult')
+        .classList.add('show');
+
+      document.getElementById('decideButton').textContent =
+        'Pick Again';
+    }
+
 
     function openPanel(panelName) {
-      document.querySelectorAll('.tab,.nav-link,.panel').forEach(element => element.classList.remove('active'));
 
-      const tab = document.querySelector(`.tab[data-panel="${panelName}"]`);
-      const navLink = document.querySelector(`.nav-link[data-panel="${panelName}"]`);
-      const panel = document.getElementById(panelName);
+      document
+        .querySelectorAll('.tab,.nav-link,.panel')
+        .forEach(element =>
+          element.classList.remove('active')
+        );
 
-      if (tab) tab.classList.add('active');
-      if (navLink) navLink.classList.add('active');
-      if (panel) panel.classList.add('active');
+      const tab =
+        document.querySelector(
+          `.tab[data-panel="${panelName}"]`
+        );
+
+      const navLink =
+        document.querySelector(
+          `.nav-link[data-panel="${panelName}"]`
+        );
+
+      const panel =
+        document.getElementById(panelName);
+
+      if (tab) {
+        tab.classList.add('active');
+      }
+
+      if (navLink) {
+        navLink.classList.add('active');
+      }
+
+      if (panel) {
+        panel.classList.add('active');
+      }
     }
 
-    document.querySelectorAll('#explore .filter').forEach(button => {
-      button.addEventListener('click', () => {
-        activeFilter = button.dataset.filter;
-        document.querySelectorAll('#explore .filter').forEach(item => item.classList.remove('active'));
-        button.classList.add('active');
-        drawRestaurants();
-      });
-    });
 
-    document.querySelectorAll('[data-campus]').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('[data-campus]').forEach(item => item.classList.remove('active'));
-        button.classList.add('active');
-        drawCampus(button.dataset.campus);
-      });
-    });
+    document
+      .querySelectorAll('#explore .filter')
+      .forEach(button => {
 
-    document.querySelectorAll('[data-guide]').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('[data-guide]').forEach(item => item.classList.remove('active'));
-        button.classList.add('active');
-        drawGuide(button.dataset.guide);
-      });
-    });
+        button.addEventListener('click', () => {
 
-    document.querySelectorAll('[data-panel]').forEach(button => {
-      button.addEventListener('click', () => {
-        openPanel(button.dataset.panel);
-        window.scrollTo({
-          top: document.querySelector('.tabs').offsetTop - 80,
-          behavior: 'smooth'
+          activeFilter =
+            button.dataset.filter;
+
+          document
+            .querySelectorAll('#explore .filter')
+            .forEach(item =>
+              item.classList.remove('active')
+            );
+
+          button.classList.add('active');
+
+          drawRestaurants();
+
         });
+
       });
-    });
+
+
+    document
+      .querySelectorAll('[data-campus]')
+      .forEach(button => {
+
+        button.addEventListener('click', () => {
+
+          document
+            .querySelectorAll('[data-campus]')
+            .forEach(item =>
+              item.classList.remove('active')
+            );
+
+          button.classList.add('active');
+
+          drawCampus(
+            button.dataset.campus
+          );
+
+        });
+
+      });
+
+
+    document
+      .querySelectorAll('[data-guide]')
+      .forEach(button => {
+
+        button.addEventListener('click', () => {
+
+          document
+            .querySelectorAll('[data-guide]')
+            .forEach(item =>
+              item.classList.remove('active')
+            );
+
+          button.classList.add('active');
+
+          drawGuide(
+            button.dataset.guide
+          );
+
+        });
+
+      });
+
+
+    document
+      .querySelectorAll('[data-panel]')
+      .forEach(button => {
+
+        button.addEventListener('click', () => {
+
+          openPanel(
+            button.dataset.panel
+          );
+
+          window.scrollTo({
+            top:
+              document.querySelector('.tabs').offsetTop - 80,
+            behavior:'smooth'
+          });
+
+        });
+
+      });
+
+
+    document
+      .getElementById('decideButton')
+      .addEventListener('click', decideForMe);
+
 
     drawRestaurants();
     drawCampus('calpoly');
     drawCollege();
     drawGuide('pismo');
     drawDesserts();
+
   </script>
+
 </body>
 </html>
+```
